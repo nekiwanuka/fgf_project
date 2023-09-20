@@ -26,6 +26,6 @@ urlpatterns = [
     path('', include('animals_app.urls'), name='animals'), 
     path('', include('cultures_app.urls'), name='cultures'),
     path('', include('plants_app.urls'), name='plants'), 
-#     path('', include('auth_app.urls')), 
+    path('', include('auth_app.urls')), 
     
     ]
