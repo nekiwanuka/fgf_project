@@ -13,11 +13,10 @@ class Plant(models.Model):
     english_name = models.CharField(max_length=250)
     scientific_name = models.CharField(max_length=250)
     description = models.CharField(max_length=250)
-    areas_in_Uganda = models.CharField(max_length=250)
+    regions = models.CharField(max_length=250) #areas in Uganda
     life_form = models.CharField(max_length=250)
     climate_impact = models.CharField(max_length=250)
     economic_value = models.CharField(max_length=250)
-    medicinal_use = models.ForeignKey(Medicinal_Use, on_delete=models.SET_NULL, null=True)
     notes = models.CharField(max_length=250)
     images = models.ImageField(null=True, blank=True)
     videos = models.FileField(upload_to='media_files', null=True, blank=True)
@@ -34,3 +33,10 @@ class Plant(models.Model):
 
     def compute_plant_entries():
         pass
+
+class Medicinal_Plant(models.Model):
+    medicinal_use = models.ForeignKey(Medicinal_Use, on_delete=models.SET_NULL, null=True)
+    plant = models.ForeignKey(Plant, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self) -> str:
+        return self.plant.local_name

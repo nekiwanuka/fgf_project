@@ -18,6 +18,7 @@ class AnimalDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = AnimalSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    
 
 
 # Animal_Classification views

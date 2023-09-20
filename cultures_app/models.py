@@ -28,7 +28,7 @@ class Clan(models.Model):
 
 
 class Cultural_Kingdom(models.Model):
-    tribe_name = models.CharField(max_length=250)   
+    kingdom_name = models.CharField(primary_key=True, max_length=250) 
     title_of_leader = models.CharField(max_length=250)
     current_king = models.CharField(max_length=250)
     current_chief_name = models.CharField(max_length=250)
@@ -36,17 +36,17 @@ class Cultural_Kingdom(models.Model):
     videos = models.FileField(upload_to='media_files', null=True, blank=True)
     audio = models.FileField(upload_to='media_files', null=True, blank=True)
     number_of_clans = models.IntegerField(default=1, null=True)
-    clan_name = models.ForeignKey(Clan, on_delete=models.SET_NULL, null=True)    
+    clan_name = models.ForeignKey(Clan, on_delete=models.SET_NULL, null=True)  
+      
 
-class Tribe(models.Model):
-    tribe_name = models.CharField(primary_key=True, max_length=250) 
+class Ethnicity(models.Model): 
+    ethnicity_name = models.CharField(primary_key=True, max_length=250) 
     region_in_Uganda = models.CharField(max_length=250) 
     language = models.CharField(max_length=250)
     food = models.CharField(max_length=250)
     staple_food = models.CharField(max_length=250)
     cuisine = models.CharField(max_length=250)
     cashcrop = models.CharField(max_length=250)
-    economic_activity = models.CharField(max_length=250)
     universal_worship = models.CharField(max_length=250)
     denominations = models.CharField(max_length=250)
     universal_rituals = models.CharField(max_length=250)
@@ -61,11 +61,22 @@ class Tribe(models.Model):
     date_entered = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
-        return self.tribe_name
+        return self.ethnicity_name
+    
+class Ethnic_Group(models.Model):
+    ethnic_group_name = models.CharField(max_length=250)
+    region_in_Uganda = models.CharField(max_length=250)
+    number_of_ethnicities = models.IntegerField(default=1, null=True)
+    number_of_languages = models.IntegerField(default=1, null=True)
+    number_of_kingdoms = models.IntegerField(default=1, null=True)
+    ethnicity_name = models.ForeignKey(Ethnicity, on_delete=models.SET_NULL, null=True)
+
+    def compute_cultural_entries():
+        pass
+
 
 class Cultural_Identity(models.Model):
-    ethnic_group = models.CharField(max_length=250) # to be deleted
-    tribe_name = models.ForeignKey(Tribe, on_delete=models.SET_NULL, null=True)  #--> if identity is by tribe and not ethnic group
+    ethnic_group = models.ForeignKey(Ethnic_Group, on_delete=models.SET_NULL, null=True)
     notes = models.CharField(max_length=250)
     contributor_name = models.CharField(max_length=250)
     citation = models.CharField(max_length=250)
@@ -74,20 +85,10 @@ class Cultural_Identity(models.Model):
     audio = models.FileField(upload_to='media_files', null=True, blank=True)
     contributor_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
     citation = models.CharField(max_length=250)
-    #date_entered = models.DateTimeField(auto_now_add=True)
+    date_entered = models.DateTimeField(auto_now_add=True)
     def __str__(self) -> str:
         return self.ethnic_group
     
     class Meta:
         ordering = ['ethnic_group']
 
-class Ethnic_Group(models.Model):
-    ethnical_group_name = models.CharField(max_length=250)
-    region_in_Uganda = models.CharField(max_length=250)
-    number_of_tribes = models.IntegerField(default=1, null=True)
-    number_of_languages = models.IntegerField(default=1, null=True)
-    number_of_kingdoms = models.IntegerField(default=1, null=True)
-    tribe_name = models.CharField(max_length=250)
-
-    def compute_cultural_entries():
-        pass

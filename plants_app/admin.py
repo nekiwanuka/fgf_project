@@ -5,3 +5,4 @@ from .import models
 
 admin.site.register(models.Medicinal_Use)
 admin.site.register(models.Plant)
+admin.site.register(models.Medicinal_Plant)

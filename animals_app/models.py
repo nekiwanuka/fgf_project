@@ -35,3 +35,4 @@ class Animal(models.Model):
     
     def compute_animal_entries():
         pass
+    

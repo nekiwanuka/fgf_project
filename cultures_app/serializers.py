@@ -2,34 +2,31 @@ from rest_framework import serializers
 from cultures_app.models import *
 
 
-
 class ClanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Clan
-        fields = ('__all__')
+        fields = "__all__"
 
 
 class Cultural_KingdomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cultural_Kingdom
-        fields = ('__all__')
+        fields = "__all__"
 
 
-class TribeSerializer(serializers.ModelSerializer):
+class EthnicitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tribe
-        fields = ('__all__')
+        model = Ethnicity
+        fields = "__all__"
 
 
 class Cultural_IdentitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Cultural_Identity
-        fields = ('__all__')
+        fields = "__all__"
 
 
 class Ethnic_GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ethnic_Group
-        fields = ('__all__')
-
-
+        fields = "__all__"
