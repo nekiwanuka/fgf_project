@@ -64,7 +64,7 @@ class Ethnicity(models.Model):
         return self.ethnicity_name
     
 class EthnicGroup(models.Model):
-    ethinic_group_name = models.CharField(max_length=250)
+    ethnic_group_name = models.CharField(max_length=250)
     region_in_Uganda = models.CharField(max_length=250)
     number_of_ethnicities = models.IntegerField(default=1, null=True)
     number_of_languages = models.IntegerField(default=1, null=True)
@@ -76,7 +76,7 @@ class EthnicGroup(models.Model):
 
 
 class CulturalIdentity(models.Model):
-    ethinic_group = models.ForeignKey(EthnicGroup, on_delete=models.SET_NULL, null=True)
+    ethnic_group = models.ForeignKey(EthnicGroup, on_delete=models.SET_NULL, null=True)
     notes = models.CharField(max_length=250)
     contributor_name = models.CharField(max_length=250)
     citation = models.CharField(max_length=250)
@@ -87,8 +87,8 @@ class CulturalIdentity(models.Model):
     citation = models.CharField(max_length=250)
     date_entered = models.DateTimeField(auto_now_add=True)
     def __str__(self) -> str:
-        return self.ethinic_group
+        return self.ethnic_group
     
     class Meta:
-        ordering = ['']
+        pass
 

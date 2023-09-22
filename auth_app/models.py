@@ -3,7 +3,7 @@ Users and Authentication Models
 """
 from django.db import models
 from django.contrib.auth.models import (
-    AbstractBaseUser, BaseUserManager, PermissionsMixin)
+    AbstractBaseUser, BaseUserManager,Group, Permission, PermissionsMixin)
 import uuid
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils.translation import gettext_lazy as _
@@ -155,6 +155,20 @@ class User(AbstractBaseUser, PermissionsMixin):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }
+    
+
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=_('groups'),
+        blank=True,
+        related_name='user_groups'  # Add related_name here
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name=_('user permissions'),
+        blank=True,
+        related_name='user_permissions'  # Add related_name here
+    )
 
     # class Meta:
     #     # db_table = 'User'
