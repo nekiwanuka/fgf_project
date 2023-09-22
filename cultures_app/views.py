@@ -2,17 +2,17 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from cultures_app.models import (
     Clan,
-    Cultural_Kingdom,
+    CulturalKingdom,
     Ethnicity,
-    Cultural_Identity,
-    Ethnic_Group,
+    CulturalIdentity,
+    EthnicGroup,
 )
 from .serializers import (
     ClanSerializer,
-    Cultural_KingdomSerializer,
+    CulturalKingdomSerializer,
     EthnicitySerializer,
-    Cultural_IdentitySerializer,
-    Ethnic_GroupSerializer,
+    CulturalIdentitySerializer,
+    EthnicGroupSerializer,
 )
 
 
@@ -32,18 +32,18 @@ class ClanDetailView(generics.RetrieveUpdateDestroyAPIView):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
 
-class Cultural_KingdomListview(generics.ListCreateAPIView):
-    queryset = Cultural_Kingdom.objects.all()
+class CulturalKingdomListview(generics.ListCreateAPIView):
+    queryset = CulturalKingdom.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = Cultural_KingdomSerializer
+    serializer_class = CulturalKingdomSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["ethnicity_name"]
 
 
-class Cultural_KingdomDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cultural_Kingdom.objects.all()
+class CulturalKingdomDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CulturalKingdom.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = Cultural_KingdomSerializer
+    serializer_class = CulturalKingdomSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
 
@@ -62,31 +62,31 @@ class EthnicityDetailView(generics.RetrieveUpdateDestroyAPIView):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
 
-class Cultural_IdentityListview(generics.ListCreateAPIView):
-    queryset = Cultural_Identity.objects.all()
+class CulturalIdentityListview(generics.ListCreateAPIView):
+    queryset = CulturalIdentity.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = Cultural_IdentitySerializer
+    serializer_class = CulturalIdentitySerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["ethnic_group"]
 
 
-class Cultural_IdentityDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cultural_Identity.objects.all()
+class CulturalIdentityDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CulturalIdentity.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = Cultural_IdentitySerializer
+    serializer_class = CulturalIdentitySerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
 
-class Ethnic_GroupListview(generics.ListCreateAPIView):
-    queryset = Ethnic_Group.objects.all()
+class EthnicGroupListview(generics.ListCreateAPIView):
+    queryset = EthnicGroup.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = Ethnic_GroupSerializer
+    serializer_class = EthnicGroupSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["ethnic_group"]
 
 
-class Ethnic_GroupDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Ethnic_Group.objects.all()
+class EthnicGroupDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = EthnicGroup.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = Ethnic_GroupSerializer
+    serializer_class = EthnicGroupSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]

@@ -8,9 +8,9 @@ class ClanSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class Cultural_KingdomSerializer(serializers.ModelSerializer):
+class CulturalKingdomSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cultural_Kingdom
+        model = CulturalKingdom
         fields = "__all__"
 
 
@@ -20,13 +20,13 @@ class EthnicitySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class Cultural_IdentitySerializer(serializers.ModelSerializer):
+class CulturalIdentitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cultural_Identity
+        model = CulturalIdentity
         fields = "__all__"
 
 
-class Ethnic_GroupSerializer(serializers.ModelSerializer):
+class EthnicGroupSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Ethnic_Group
+        model = EthnicGroup
         fields = "__all__"

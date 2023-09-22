@@ -1,9 +1,17 @@
 from rest_framework import serializers
-from auth_app.models import User_Manager
+from .models import User, Administrator, Contributor
 
-
-
-class UserManagerSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User_Manager
-        fields = ('__all__') #('email','password')
+        model = User
+        fields = '__all__'
+
+class AdministratorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Administrator
+        fields = '__all__'
+
+class ContributorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contributor
+        fields = '__all__'

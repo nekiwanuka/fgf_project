@@ -4,4 +4,4 @@ from .import models
 
 # Register your models here.
 admin.site.register(models.Animal)
-admin.site.register(models.Animal_Classification)
+admin.site.register(models.AnimalClassification)

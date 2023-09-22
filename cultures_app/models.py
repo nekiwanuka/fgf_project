@@ -27,7 +27,7 @@ class Clan(models.Model):
     date_entered = models.DateTimeField(auto_now_add=True)
 
 
-class Cultural_Kingdom(models.Model):
+class CulturalKingdom(models.Model):
     kingdom_name = models.CharField(primary_key=True, max_length=250) 
     title_of_leader = models.CharField(max_length=250)
     current_king = models.CharField(max_length=250)
@@ -51,7 +51,7 @@ class Ethnicity(models.Model):
     denominations = models.CharField(max_length=250)
     universal_rituals = models.CharField(max_length=250)
     ceremonies = models.CharField(max_length=250)
-    kingdom = models.ForeignKey(Cultural_Kingdom, on_delete=models.SET_NULL, null=True)
+    kingdom = models.ForeignKey(CulturalKingdom, on_delete=models.SET_NULL, null=True)
     chiefdom = models.CharField(max_length=250)
     images = models.ImageField(null=True, blank=True)
     videos = models.FileField(upload_to='media_files', null=True, blank=True)
@@ -63,8 +63,8 @@ class Ethnicity(models.Model):
     def __str__(self) -> str:
         return self.ethnicity_name
     
-class Ethnic_Group(models.Model):
-    ethnic_group_name = models.CharField(max_length=250)
+class EthnicGroup(models.Model):
+    ethinic_group_name = models.CharField(max_length=250)
     region_in_Uganda = models.CharField(max_length=250)
     number_of_ethnicities = models.IntegerField(default=1, null=True)
     number_of_languages = models.IntegerField(default=1, null=True)
@@ -75,8 +75,8 @@ class Ethnic_Group(models.Model):
         pass
 
 
-class Cultural_Identity(models.Model):
-    ethnic_group = models.ForeignKey(Ethnic_Group, on_delete=models.SET_NULL, null=True)
+class CulturalIdentity(models.Model):
+    ethinic_group = models.ForeignKey(EthnicGroup, on_delete=models.SET_NULL, null=True)
     notes = models.CharField(max_length=250)
     contributor_name = models.CharField(max_length=250)
     citation = models.CharField(max_length=250)
@@ -87,8 +87,8 @@ class Cultural_Identity(models.Model):
     citation = models.CharField(max_length=250)
     date_entered = models.DateTimeField(auto_now_add=True)
     def __str__(self) -> str:
-        return self.ethnic_group
+        return self.ethinic_group
     
     class Meta:
-        ordering = ['ethnic_group']
+        ordering = ['']
 

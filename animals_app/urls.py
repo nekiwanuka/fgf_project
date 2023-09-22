@@ -1,13 +1,10 @@
 from django.urls import path
-from . import views
+from .views import AnimalListCreateView, AnimalDetailView, AnimalClassificationListCreateView, AnimalClassificationDetailView
 
 urlpatterns = [
-    path('animals/', views.AnimalListView.as_view()),
-    path('animals/<int:pk>/', views.AnimalDetailView.as_view()),
-    path('classification/', views.Animal_ClassificationListView.as_view()),
-    path('classification/<int:pk>/', views.Animal_ClassificationDetailView.as_view()),
-    
-   
-    
+    path('animals/', AnimalListCreateView.as_view(), name='animal-list-create'),
+    path('animals/<int:pk>/', AnimalDetailView.as_view(), name='animal-detail'),
 
+    path('animal-classifications/', AnimalClassificationListCreateView.as_view(), name='animal-classification-list-create'),
+    path('animal-classifications/<int:pk>/', AnimalClassificationDetailView.as_view(), name='animal-classification-detail'),
 ]

@@ -1,20 +1,20 @@
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Medicinal_Use, Plant, Medicinal_Plant
-from .serializers import Medicinal_UseSerializer, PlantSerializer, Medicinal_PlantSerializer
+from .models import MedicinalUse, Plant, MedicinalPlant
+from .serializers import MedicinalUseSerializer, PlantSerializer, MedicinalPlantSerializer
 
 # Medicinal_Use views
 
-class Medicinal_UseListView(generics.ListCreateAPIView):
-    queryset = Medicinal_Use.objects.all()
-    serializer_class = Medicinal_UseSerializer
+class MedicinalUseListView(generics.ListCreateAPIView):
+    queryset = MedicinalUse.objects.all()
+    serializer_class = MedicinalUseSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['health_issue', 'dosage_and_formulation', 'part_used']
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class Medicinal_UseDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Medicinal_Use.objects.all()
-    serializer_class = Medicinal_UseSerializer
+class MedicinalUseDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MedicinalUse.objects.all()
+    serializer_class = MedicinalUseSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
@@ -24,8 +24,8 @@ class PlantListView(generics.ListCreateAPIView):
     queryset = Plant.objects.all()
     serializer_class = PlantSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['local_name', 'english_name', 'scientific_name']
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    search_fields = ['local_name', 'english_name', 'scientific_name']
 
 class PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Plant.objects.all()
@@ -34,14 +34,15 @@ class PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 # Medicinal Plant views
-class Medicinal_PlantListView(generics.ListCreateAPIView):
-    queryset = Medicinal_Plant.objects.all()
-    serializer_class = Medicinal_PlantSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['medicinal_use', 'plant']
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]   
 
-class Medicinal_PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Medicinal_Plant.objects.all()
-    serializer_class = Medicinal_PlantSerializer
+class MedicinalPlantListView(generics.ListCreateAPIView):
+    queryset = MedicinalPlant.objects.all()
+    serializer_class = MedicinalPlantSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]   
+    search_fields = ['medicinal_use', 'plant']
+
+class MedicinalPlantDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MedicinalPlant.objects.all()
+    serializer_class = MedicinalPlantSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

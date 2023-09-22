@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import Medicinal_Use, Plant, Medicinal_Plant
+from .models import MedicinalUse, Plant, MedicinalPlant
 
-class Medicinal_UseSerializer(serializers.ModelSerializer):
+class MedicinalUseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Medicinal_Use
+        model = MedicinalUse
         fields = '__all__'
 
 class PlantSerializer(serializers.ModelSerializer):
@@ -11,8 +11,8 @@ class PlantSerializer(serializers.ModelSerializer):
         model = Plant
         fields = '__all__'
 
-class Medicinal_PlantSerializer(serializers.ModelSerializer):
+class MedicinalPlantSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Medicinal_Plant
+        model = MedicinalPlant
         fields = '__all__'
     

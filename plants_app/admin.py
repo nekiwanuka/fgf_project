@@ -3,6 +3,6 @@ from .import models
 
 # Register your models here.
 
-admin.site.register(models.Medicinal_Use)
+admin.site.register(models.MedicinalUse)
 admin.site.register(models.Plant)
-admin.site.register(models.Medicinal_Plant)
+admin.site.register(models.MedicinalPlant)

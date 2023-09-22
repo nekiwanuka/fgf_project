@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Medicinal_Use(models.Model):
+class MedicinalUse(models.Model):
     health_issue = models.CharField(max_length=250)
     dosage_and_formulation = models.CharField(max_length=250)
     part_used = models.CharField(max_length=250)
@@ -34,8 +34,8 @@ class Plant(models.Model):
     def compute_plant_entries():
         pass
 
-class Medicinal_Plant(models.Model):
-    medicinal_use = models.ForeignKey(Medicinal_Use, on_delete=models.SET_NULL, null=True)
+class MedicinalPlant(models.Model):
+    medicinal_use = models.ForeignKey(MedicinalUse, on_delete=models.SET_NULL, null=True)
     plant = models.ForeignKey(Plant, on_delete=models.SET_NULL, null=True)
 
     def __str__(self) -> str:

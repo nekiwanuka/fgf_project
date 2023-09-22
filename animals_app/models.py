@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-class Animal_Classification(models.Model): # Kingdom
+class AnimalClassification(models.Model): # Kingdom
     kingdom_name = models.CharField(max_length=250)
     species = models.CharField(max_length=250)
     number_of_species = models.IntegerField(default=1, null=True)
@@ -15,7 +15,7 @@ class Animal(models.Model):
     scientific_name = models.CharField(max_length=250)
     description = models.CharField(max_length=250)
     area_in_Uganda = models.CharField(max_length=250)
-    animal_classifications = models.ForeignKey(Animal_Classification, on_delete=models.SET_NULL, null=True)
+    animal_classifications = models.ForeignKey(AnimalClassification, on_delete=models.SET_NULL, null=True)
     economic_value = models.CharField(max_length=250)
     threats = models.CharField(max_length=250)
     habitat = models.CharField(max_length=250)
