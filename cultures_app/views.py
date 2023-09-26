@@ -1,19 +1,18 @@
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from cultures_app.models import (
-    Clan,
-    CulturalKingdom,
-    Ethnicity,
-    CulturalIdentity,
-    EthnicGroup,
-)
-from .serializers import (
-    ClanSerializer,
-    CulturalKingdomSerializer,
-    EthnicitySerializer,
-    CulturalIdentitySerializer,
-    EthnicGroupSerializer,
-)
+from cultures_app.models import *
+from .serializers import *
+# from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate
+# from django.contrib.auth import login
+# from django.contrib.auth import logout
+# from django.contrib.auth import update_session_auth_hash
+# from django.contrib.auth.forms import PasswordChangeForm
+# from django.contrib.auth.decorators import login_required
+
+
+
 
 
 # Create your views here.
