@@ -31,13 +31,8 @@ class Plant(models.Model):
     class Meta:
         ordering = ['local_name']
 
-    @classmethod
-    def compute_plant_entries(cls):
-        """
-        Computes the total number of plant entries.
-        """
-        return cls.objects.count()
-        
+    def compute_plant_entries():
+        pass
 
 class MedicinalPlant(models.Model):
     medicinal_use = models.ForeignKey(MedicinalUse, on_delete=models.SET_NULL, null=True)

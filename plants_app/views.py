@@ -1,4 +1,3 @@
-import statistics
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from plants_app.models import *
@@ -72,9 +71,3 @@ class MedicinalPlantDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MedicinalPlantSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
-    
-# Plant Entries APIview for calculating the number of plant entries
-class PlantEntriesAPIView(APIView):
-    def get(self, request):
-        total_entries = Plant.compute_plant_entries()
-        return Response({'total_entries': total_entries}, status=statistics.HTTP_200_OK)

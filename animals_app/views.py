@@ -1,11 +1,8 @@
-import statistics
-from requests import Response
 from rest_framework import generics
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from animals_app.models import *
 from .serializers import *
-from rest_framework.views import APIView
 #from django.contrib.auth.models import User
 # from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate
@@ -43,9 +40,3 @@ class AnimalClassificationDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AnimalClassificationSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['local_name', 'english_name', 'scientific_name']
-
-
-class AnimalEntriesAPIView(APIView):
-    def get(self, request):
-        total_entries = Animal.compute_animal_entries()
-        return Response({'total_entries': total_entries}, status=statistics.HTTP_200_OK)

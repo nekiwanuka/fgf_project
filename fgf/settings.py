@@ -11,13 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-# Rest of your settings.py file
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!7m58f7q0te_jb-6j5%ret!yi#ffftgn!pni+j%f=#g)12&%3m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -100,10 +93,10 @@ DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql'),
         'USER': os.environ.get('PG_USER','postgres'),
-        'PASSWORD':os.environ.get('PG_PASSWORD','Z1YQ9c05pXHON1aN3rcM'),
-        'NAME': os.environ.get('PG_DB','railway'),
-        'PORT': os.environ.get('PG_PORT','6164'),
-        'HOST': os.environ.get('PG_HOST','containers-us-west-101.railway.app')
+        'PASSWORD':os.environ.get('PG_PASSWORD','postgres'),
+        'NAME': os.environ.get('PG_DB','postgres'),
+        'PORT': os.environ.get('PG_PORT','5432'),
+        'HOST': os.environ.get('PG_HOST','localhost')
     }
 }
 
@@ -153,5 +146,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
