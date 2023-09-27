@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!7m58f7q0te_jb-6j5%ret!yi#ffftgn!pni+j%f=#g)12&%3m'
+SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = "django-insecure-3h0!+q!7@4z^)w^3!&t0e#-x1k^%o$zj#_5@4@2q!+q!+q!+q!+q!+q!+q!+q!+q!+q!"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "FALSE").lower() == "true"
+#DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(" ")
+#ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -89,17 +95,20 @@ WSGI_APPLICATION = 'fgf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+default = os.environ.get("DATABASE_URL")
+DATABASES = ['default']
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql'),
-        'USER': os.environ.get('PG_USER','postgres'),
-        'PASSWORD':os.environ.get('PG_PASSWORD','Z1YQ9c05pXHON1aN3rcM'),
-        'NAME': os.environ.get('PG_DB','railway'),
-        'PORT': os.environ.get('PG_PORT','6164'),
-        'HOST': os.environ.get('PG_HOST','containers-us-west-101.railway.app')
+        'USER': os.environ.get('PG_USER','fgf_database_user'),
+        'PASSWORD':os.environ.get('PG_PASSWORD','Hqa4PKjnQGZa33ErpfAYCRpSujZmyp7M'),
+        'NAME': os.environ.get('PG_DB','fgf_database'),
+        'PORT': os.environ.get('PG_PORT','5432'),
+        'HOST': os.environ.get('PG_HOST','dpg-cka1lbev3ddc739sufb0-a'),
     }
 }
-
+#DATABASES['default'] = dj_database_url.parse('postgres://fgf_database_user:Hqa4PKjnQGZa33ErpfAYCRpSujZmyp7M@dpg-cka1lbev3ddc739sufb0-a.oregon-postgres.render.com/fgf_database')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
