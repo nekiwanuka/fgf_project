@@ -16,3 +16,5 @@ class MedicinalPlantSerializer(serializers.ModelSerializer):
         model = MedicinalPlant
         fields = '__all__'
     
+    def create(self, validated_data):
+        return MedicinalPlant.objects.create(**validated_data)
