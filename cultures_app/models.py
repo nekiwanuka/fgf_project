@@ -14,7 +14,7 @@ class Clan(models.Model):
     common_male_names = models.CharField(max_length=250) #male_names_meaning = models.CharField(max_length=250)
     common_female_names = models.CharField(max_length=250) #female_name_meaning = models.CharField(max_length=250) 
     exceptional_male_names  = models.CharField(max_length=250)
-    exceptional_male_names  = models.CharField(max_length=250) #Meaning  = models.CharField(max_length=250) 
+    exceptional_female_names  = models.CharField(max_length=250) #Meaning  = models.CharField(max_length=250) 
     taboos = models.CharField(max_length=250)   
     known_headgod = models.CharField(max_length=250) #should we add a model for this?
     known_deities = models.CharField(max_length=250) #roles  = models.CharField(max_length=250) 
