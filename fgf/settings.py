@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-x51dn5%sqj$rc-#i+-5ivq=#b2u3t7663)0)%xds22fu@c9l$1"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = ["*"]
@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "cultures_app",
     "rest_framework",
     "bootstrap4",
+    "drf_spectacular",
+
 ]
 
 MIDDLEWARE = [
@@ -80,6 +82,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "fgf.wsgi.application"
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    
+}
 
 
 # Database
