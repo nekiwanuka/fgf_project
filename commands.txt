@@ -1,0 +1,2 @@
+docker build --tag fgf-docker .
+docker run --publish 8000:8000 fgf-docker
