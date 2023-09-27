@@ -9,6 +9,9 @@ class AnimalClassification(models.Model): # Kingdom
     animal_class = models.CharField(max_length=250)
     order = models.CharField(max_length=250)
 
+    def __str__(self) -> str:
+        return self.animal_class
+
 class Animal(models.Model):
     local_name = models.CharField(max_length=250)
     english_name = models.CharField(max_length=250)
@@ -33,6 +36,10 @@ class Animal(models.Model):
     class Meta:
         ordering = ['local_name']
     
-    def compute_animal_entries():
-        pass
-    
+    #Calculate entries
+    @classmethod
+    def compute_animal_entries(cls):
+        """
+        Computes the total number of animal entries.
+        """
+        return cls.objects.count()

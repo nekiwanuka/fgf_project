@@ -93,10 +93,10 @@ DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql'),
         'USER': os.environ.get('PG_USER','postgres'),
-        'PASSWORD':os.environ.get('PG_PASSWORD','postgres'),
-        'NAME': os.environ.get('PG_DB','postgres'),
-        'PORT': os.environ.get('PG_PORT','5432'),
-        'HOST': os.environ.get('PG_HOST','localhost')
+        'PASSWORD':os.environ.get('PG_PASSWORD','Z1YQ9c05pXHON1aN3rcM'),
+        'NAME': os.environ.get('PG_DB','railway'),
+        'PORT': os.environ.get('PG_PORT','6164'),
+        'HOST': os.environ.get('PG_HOST','containers-us-west-101.railway.app')
     }
 }
 

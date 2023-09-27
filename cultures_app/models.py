@@ -4,19 +4,18 @@ from django.contrib.auth.models import User
 
 class Clan(models.Model):
     clan_name = models.CharField(max_length=250)
-    description = models.CharField(max_length=250)
     clan_seat = models.CharField(max_length=250)
+    totem = models.CharField(max_length=250)
+    secondary_totem = models.CharField(max_length=250)
     clan_history = models.CharField(max_length=250)
     clan_leader_title = models.CharField(max_length=250)
     clan_leader_name = models.CharField(max_length=250)
     cultural_sites = models.CharField(max_length=250)
-    totem = models.CharField(max_length=250)
-    secondary_totem = models.CharField(max_length=250)
     common_male_names = models.CharField(max_length=250) #male_names_meaning = models.CharField(max_length=250)
     common_female_names = models.CharField(max_length=250) #female_name_meaning = models.CharField(max_length=250) 
-    special_names  = models.CharField(max_length=250) #Meaning  = models.CharField(max_length=250) 
-    taboos = models.CharField(max_length=250) 
-    spirituality  = models.CharField(max_length=250)  
+    exceptional_male_names  = models.CharField(max_length=250)
+    exceptional_male_names  = models.CharField(max_length=250) #Meaning  = models.CharField(max_length=250) 
+    taboos = models.CharField(max_length=250)   
     known_headgod = models.CharField(max_length=250) #should we add a model for this?
     known_deities = models.CharField(max_length=250) #roles  = models.CharField(max_length=250) 
     images = models.ImageField(null=True, blank=True)
@@ -36,7 +35,8 @@ class CulturalKingdom(models.Model):
     videos = models.FileField(upload_to='media_files', null=True, blank=True)
     audio = models.FileField(upload_to='media_files', null=True, blank=True)
     number_of_clans = models.IntegerField(default=1, null=True)
-    clan_name = models.ForeignKey(Clan, on_delete=models.SET_NULL, null=True)  
+    clan_name = models.ForeignKey(Clan, on_delete=models.SET_NULL, null=True)
+  
       
 
 class Ethnicity(models.Model): 
