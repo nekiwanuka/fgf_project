@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-  django_app:
-    build: .
-    ports:
-      - "8000:8000"
-    command: bash -c "python manage.py migrate && gunicorn fgf.wsgi:application --bind 0.0.0.0:8000"
