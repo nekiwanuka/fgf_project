@@ -12,11 +12,12 @@ class Plant(models.Model):
     local_name = models.CharField(max_length=250)
     english_name = models.CharField(max_length=250)
     scientific_name = models.CharField(max_length=250)
-    description = models.CharField(max_length=250)
-    regions = models.CharField(max_length=250) #areas in Uganda
+    description = models.CharField(max_length=250) #general appearance, shape, color, unique features
+    region = models.CharField(max_length=250) #areas in Uganda
+    habitat = models.CharField(max_length=250)
     life_form = models.CharField(max_length=250)
     climate_impact = models.CharField(max_length=250)
-    economic_value = models.CharField(max_length=250)
+    economic_value = models.CharField(max_length=250)# is it a food crop, cash crop, herb, etc
     notes = models.CharField(max_length=250)
     images = models.ImageField(null=True, blank=True)
     videos = models.FileField(upload_to='media_files', null=True, blank=True)
@@ -35,8 +36,9 @@ class Plant(models.Model):
         pass
 
 class MedicinalPlant(models.Model):
-    medicinal_use = models.ForeignKey(MedicinalUse, on_delete=models.SET_NULL, null=True)
     plant = models.ForeignKey(Plant, on_delete=models.SET_NULL, null=True)
-
+    medicinal_use = models.ForeignKey(MedicinalUse, on_delete=models.SET_NULL, null=True)
+    
     def __str__(self) -> str:
-        return self.plant.local_name
+        return self.plant.local_name, self.medicinal_use.health_issue, self.medicinal_use.dosage_and_formulation
+    
