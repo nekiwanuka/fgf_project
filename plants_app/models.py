@@ -51,24 +51,13 @@ class Plant(models.Model):
     citation = models.CharField(max_length=250)
     date_entered = models.DateTimeField(auto_now_add=True)
 
-    # Contributor details
-    contributor_email = models.EmailField()
-    contributor_phone = PhoneNumberField(blank=True, help_text='Contributor\'s phone number')
-    contributor_is_source = models.BooleanField(default=True, help_text='Is the contributor the source of information?')
-
-    # If the contributor is not the source, provide details of the source
-    source_name = models.CharField(max_length=100, blank=True, help_text='Source\'s name')
-    source_email = models.EmailField(blank=True, help_text='Source\'s email address')
-    source_phone = PhoneNumberField(blank=True, help_text='Source\'s phone number')
-
-    # Contributor's publishing preference
     PUBLISH_CHOICES = [
         ('', 'Select Publishing Preference'),
         ('name_and_email', 'Name and Email'),
         ('name_only', 'Name Only'),
         ('none', 'Do Not Publish'),
     ]
-    publish_preference = models.CharField(max_length=20, choices=PUBLISH_CHOICES)
+    publish_preference = models.CharField(max_length=20, choices=PUBLISH_CHOICES, default='', blank=True, null=True)
 
     def __str__(self):
         return self.english_name
@@ -92,7 +81,6 @@ class MedicinalPlant(models.Model):
     notes = models.TextField(blank=True, help_text='Additional notes for medicinal values')
     plant = models.OneToOneField(Plant, on_delete=models.CASCADE, null=True, blank=True)
     
-    
     def save(self, *args, **kwargs):
         # Check if medicinal values are provided and update the flag accordingly
         self.medicinal_values_entered = bool(
@@ -111,7 +99,6 @@ class MedicinalPlant(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        # Access related fields and return the desired representation
         english_name = self.plant.english_name if self.plant else "No English Name"
         scientific_name = self.plant.scientific_name if self.plant else "No Scientific Name"
         local_names = ', '.join([plant_name.local_name for plant_name in self.plant.plant_names.all()]) if self.plant else "No Local Names"
