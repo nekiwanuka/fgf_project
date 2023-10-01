@@ -1,72 +1,39 @@
-import statistics
-from rest_framework import generics, permissions, filters
-from django_filters.rest_framework import DjangoFilterBackend
-from plants_app.models import *
-from .serializers import *
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.views import APIView
-# from rest_framework_simplejwt.views import TokenObtainPairView
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework_simplejwt.tokens import RefreshToken
-# from django.contrib.auth.models import User
-# from django.contrib.auth.models import User
-# from django.contrib.auth import authenticate
-# from django.contrib.auth import login
-# from django.contrib.auth import logout
-# from django.contrib.auth import update_session_auth_hash
-# from django.contrib.auth.forms import PasswordChangeForm
-# from django.contrib.auth.decorators import login_required
+from .models import Plant, PlantName, MedicinalPlant
+from .serializers import PlantSerializer, PlantNameSerializer, MedicinalPlantSerializer
 
-
-
-# Medicinal_Use views
-class MedicinalUseListView(generics.ListCreateAPIView):
-    queryset = MedicinalUse.objects.all()
-    serializer_class = MedicinalUseSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['health_issue', 'dosage_and_formulation', 'part_used']
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-        
-
-class MedicinalUseDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = MedicinalUse.objects.all()
-    serializer_class = MedicinalUseSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-
-# Plant views
-class PlantListView(generics.ListCreateAPIView):
+class PlantViewSet(viewsets.ModelViewSet):
     queryset = Plant.objects.all()
     serializer_class = PlantSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    search_fields = ['local_name', 'english_name', 'scientific_name']
 
+    @action(detail=True, methods=['post'])
+    def add_local_name(self, request, pk=None):
+        plant = self.get_object()
 
-class PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Plant.objects.all()
-    serializer_class = PlantSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+        local_name = request.data.get('local_name')
+        language = request.data.get('language')
 
+        if local_name and language:
+            plant_name = PlantName.objects.create(plant=plant, local_name=local_name, language=language)
+            serializer = PlantNameSerializer(plant_name)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"error": "Both local name and language are required."}, status=status.HTTP_400_BAD_REQUEST)
 
-# Medicinal Plant views
-class MedicinalPlantListView(generics.ListCreateAPIView):
+class PlantNameViewSet(viewsets.ModelViewSet):
+    queryset = PlantName.objects.all()
+    serializer_class = PlantNameSerializer
+
+class MedicinalPlantViewSet(viewsets.ModelViewSet):
     queryset = MedicinalPlant.objects.all()
     serializer_class = MedicinalPlantSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]   
-    search_fields = ['medicinal_use', 'plant', 'local_name']
 
+    def perform_create(self, serializer):
+        # Automatically set medicinal_values_entered to True
+        serializer.save(medicinal_values_entered=True)
 
+    # You can add more actions as needed for the MedicinalPlant model
 
-class MedicinalPlantDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = MedicinalPlant.objects.all()
-    serializer_class = MedicinalPlantSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-# Plant Entries APIview for calculating the number of plant entries
-class PlantEntriesAPIView(APIView):
-    def get(self, request):
-        total_entries = Plant.compute_plant_entries()
-        return Response({'total_entries': total_entries}, status=statistics.HTTP_200_OK)   
+# Add other views as needed for your application
