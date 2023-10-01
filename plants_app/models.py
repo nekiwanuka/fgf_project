@@ -53,7 +53,7 @@ class Plant(models.Model):
     def __str__(self):
         return self.english_name
 
-class PlantName(models.Model):
+class PlantLocalName(models.Model):
     plant = models.ForeignKey(Plant, related_name='plant_names', on_delete=models.CASCADE)
     local_name = models.CharField(max_length=100)
     language = models.CharField(max_length=100)

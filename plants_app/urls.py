@@ -1,11 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import PlantViewSet, PlantNameViewSet, MedicinalPlantViewSet
+from .views import PlantViewSet, PlantLocalNameViewSet, MedicinalPlantViewSet
 
 # Create a router and register our viewsets with it
 router = DefaultRouter()
 router.register(r'plants', PlantViewSet)
-router.register(r'plant-names', PlantNameViewSet)
+router.register(r'plant-names', PlantLocalNameViewSet)
 router.register(r'medicinal-plants', MedicinalPlantViewSet)
 
 

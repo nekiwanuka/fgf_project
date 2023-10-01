@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from .models import Plant, PlantName, MedicinalPlant
+from .models import Plant, PlantLocalName, MedicinalPlant
 
-class PlantNameSerializer(serializers.ModelSerializer):
+class PlantLocalNameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PlantName
+        model = PlantLocalName
         fields = ['local_name', 'language']
 
 class PlantSerializer(serializers.ModelSerializer):
-    plant_names = PlantNameSerializer(many=True, read_only=True)
+    plant_names = PlantLocalNameSerializer(many=True, read_only=True)
 
     class Meta:
         model = Plant
