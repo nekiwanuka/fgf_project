@@ -13,7 +13,7 @@ class PlantViewSet(viewsets.ModelViewSet):
     search_fields = ['english_name', 'scientific_name']
 
     @action(detail=True, methods=['post'])
-    def add_local_name(self, request, pk=None):
+    def add_plant_name(self, request, pk=None):
         plant = self.get_object()
 
         local_name = request.data.get('local_name')
@@ -26,25 +26,16 @@ class PlantViewSet(viewsets.ModelViewSet):
         else:
             return Response({"error": "Both local name and language are required."}, status=status.HTTP_400_BAD_REQUEST)
 
-class PlantDetailsViewSet(viewsets.ModelViewSet):
-    queryset = Plant.objects.all()
-    serializer_class = PlantSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['english_name', 'scientific_name']
-       
+
 class PlantNameViewSet(viewsets.ModelViewSet):
     queryset = PlantName.objects.all()
     serializer_class = PlantNameSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['local_name', 'language']
-    
+
 
 class MedicinalPlantViewSet(viewsets.ModelViewSet):
     queryset = MedicinalPlant.objects.all()
     serializer_class = MedicinalPlantSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['english_name', 'scientific_name']
-    
-
-   
-
+    search_fields = ['plant__english_name', 'plant__scientific_name']

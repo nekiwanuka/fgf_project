@@ -5,15 +5,12 @@ from .views import PlantViewSet, PlantNameViewSet, MedicinalPlantViewSet
 # Create a router and register our viewsets with it
 router = DefaultRouter()
 router.register(r'plants', PlantViewSet)
-router.register(r'plantnames', PlantNameViewSet)
-router.register(r'medicinalplants', MedicinalPlantViewSet)
+router.register(r'plant-names', PlantNameViewSet)
+router.register(r'medicinal-plants', MedicinalPlantViewSet)
 
 
 
+# The API URLs are now determined automatically by the router
 urlpatterns = [
     path('', include(router.urls)),
-    
-    
 ]
-
-# Add other URL patterns as needed for your application

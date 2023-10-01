@@ -2,62 +2,53 @@ from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 
-# Choices for fields
-REGION_CHOICES = [
-    ('', 'Select Region'),
-    ('Northern Uganda', 'Northern Uganda'),
-    ('West Nile', 'West Nile'),
-    ('Central Uganda', 'Central Uganda'),
-    ('Eastern Uganda', 'Eastern Uganda'),
-    ('Western Uganda', 'Western Uganda'),
-    ('All Regions', 'All Regions'),
-]
+class Region(models.TextChoices):
+    NORTHERN_UGANDA = 'Northern Uganda', 'Northern Uganda'
+    WEST_NILE = 'West Nile', 'West Nile'
+    CENTRAL_UGANDA = 'Central Uganda', 'Central Uganda'
+    EASTERN_UGANDA = 'Eastern Uganda', 'Eastern Uganda'
+    WESTERN_UGANDA = 'Western Uganda', 'Western Uganda'
+    ALL_REGIONS = 'All Regions', 'All Regions'
 
-LIFE_FORM_CHOICES = [
-    ('', 'Select Life Form'),
-    ('shrub', 'Shrub'),
-    ('tree', 'Tree'),
-    ('herb', 'Herb'),
-    ('grass', 'Grass'),
-    ('climber', 'Climber'),
-    ('other', 'Other'),
-]
+class LifeForm(models.TextChoices):
+    SHRUB = 'shrub', 'Shrub'
+    TREE = 'tree', 'Tree'
+    HERB = 'herb', 'Herb'
+    GRASS = 'grass', 'Grass'
+    CLIMBER = 'climber', 'Climber'
+    OTHER = 'other', 'Other'
 
-VALUE_CHOICES = [
-    ('', 'Select Value'),
-    ('ecological', 'Ecological'),
-    ('social', 'Social'),
-    ('economic', 'Economic'),
-    ('nutritional', 'Nutritional'),
-    ('other', 'Other'),
-]
+class Value(models.TextChoices):
+    ECOLOGICAL = 'ecological', 'Ecological'
+    SOCIAL = 'social', 'Social'
+    ECONOMIC = 'economic', 'Economic'
+    NUTRITIONAL = 'nutritional', 'Nutritional'
+    OTHER = 'other', 'Other'
+
+class PublishPreference(models.TextChoices):
+    NAME_AND_EMAIL = 'name_and_email', 'Name and Email'
+    NAME_ONLY = 'name_only', 'Name Only'
+    NONE = 'none', 'Do Not Publish'
 
 class Plant(models.Model):
     english_name = models.CharField(max_length=250)
     scientific_name = models.CharField(max_length=250)
-    region = models.CharField(max_length=50, choices=REGION_CHOICES)
+    region = models.CharField(max_length=50, choices=Region.choices)
     unique_habitat = models.CharField(max_length=250)
-    life_form = models.CharField(max_length=250, choices=LIFE_FORM_CHOICES)
+    life_form = models.CharField(max_length=250, choices=LifeForm.choices)
     specify_other_life_form = models.CharField(max_length=250, blank=True, null=True)
-    value = models.CharField(max_length=250, choices=VALUE_CHOICES)
+    value = models.CharField(max_length=250, choices=Value.choices)
     if_other_value_specify = models.CharField(max_length=250, blank=True, null=True)
     value_details = models.CharField(max_length=250, blank=True, null=True)
     climate_impact = models.CharField(max_length=250)
     research_notes = models.TextField()
-    images = models.ImageField(null=True, blank=True)
-    videos = models.FileField(upload_to='media_files', null=True, blank=True)
-    audio = models.FileField(upload_to='media_files', null=True, blank=True)
+    images = models.ImageField(null=True, blank=True, upload_to='media_files')
+    videos = models.FileField(null=True, blank=True, upload_to='media_files')
+    audio = models.FileField(null=True, blank=True, upload_to='media_files')
     contributor_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     citation = models.CharField(max_length=250)
     date_entered = models.DateTimeField(auto_now_add=True)
-
-    PUBLISH_CHOICES = [
-        ('', 'Select Publishing Preference'),
-        ('name_and_email', 'Name and Email'),
-        ('name_only', 'Name Only'),
-        ('none', 'Do Not Publish'),
-    ]
-    publish_preference = models.CharField(max_length=20, choices=PUBLISH_CHOICES, default='', blank=True, null=True)
+    publish_preference = models.CharField(max_length=20, choices=PublishPreference.choices, blank=True, null=True)
 
     def __str__(self):
         return self.english_name
