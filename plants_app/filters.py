@@ -1,12 +1,18 @@
 import django_filters
-from .models import Plant, MedicinalPlant, PlantName
+from .models import *
 
 class PlantFilter(django_filters.FilterSet):
     class Meta:
         model = Plant
         fields = {
-            'english_name': ['exact', 'icontains'],
-            'scientific_name': ['exact', 'icontains'],
+   
+            'english_name': ['icontains'],
+            'scientific_name': ['icontains'],
+            'region': ['exact'],
+            'life_form': ['exact'],
+            'value': ['exact'],
+            'if_other_value_specify': ['icontains'],
+   
             # Add more fields to filter as needed
         }
 
@@ -24,5 +30,6 @@ class PlantNameFilter(django_filters.FilterSet):
         fields = {
             'local_name': ['exact', 'icontains'],
             'language': ['exact', 'icontains'],
+            'plant': ['exact'],
             # Add more fields to filter as needed
         }

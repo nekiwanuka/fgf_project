@@ -8,8 +8,12 @@ router.register(r'plants', PlantViewSet)
 router.register(r'plantnames', PlantNameViewSet)
 router.register(r'medicinalplants', MedicinalPlantViewSet)
 
+
+
 urlpatterns = [
     path('', include(router.urls)),
+    
+    
 ]
 
 # Add other URL patterns as needed for your application

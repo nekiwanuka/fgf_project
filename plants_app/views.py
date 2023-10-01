@@ -1,12 +1,16 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Plant, PlantName, MedicinalPlant
 from .serializers import PlantSerializer, PlantNameSerializer, MedicinalPlantSerializer
+
 
 class PlantViewSet(viewsets.ModelViewSet):
     queryset = Plant.objects.all()
     serializer_class = PlantSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['english_name', 'scientific_name']
 
     @action(detail=True, methods=['post'])
     def add_local_name(self, request, pk=None):
@@ -22,18 +26,25 @@ class PlantViewSet(viewsets.ModelViewSet):
         else:
             return Response({"error": "Both local name and language are required."}, status=status.HTTP_400_BAD_REQUEST)
 
+class PlantDetailsViewSet(viewsets.ModelViewSet):
+    queryset = Plant.objects.all()
+    serializer_class = PlantSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['english_name', 'scientific_name']
+       
 class PlantNameViewSet(viewsets.ModelViewSet):
     queryset = PlantName.objects.all()
     serializer_class = PlantNameSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['local_name', 'language']
+    
 
 class MedicinalPlantViewSet(viewsets.ModelViewSet):
     queryset = MedicinalPlant.objects.all()
     serializer_class = MedicinalPlantSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['english_name', 'scientific_name']
+    
 
-    def perform_create(self, serializer):
-        # Automatically set medicinal_values_entered to True
-        serializer.save(medicinal_values_entered=True)
+   
 
-    # You can add more actions as needed for the MedicinalPlant model
-
-# Add other views as needed for your application

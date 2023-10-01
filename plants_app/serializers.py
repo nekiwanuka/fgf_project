@@ -19,9 +19,13 @@ class PlantSerializer(serializers.ModelSerializer):
         plant_names_data = PlantNameSerializer(instance.plant_names.all(), many=True).data
         representation['plant_names'] = plant_names_data
         return representation
-    
-    
+
 class MedicinalPlantSerializer(serializers.ModelSerializer):
+    english_name = serializers.CharField(source='plant.english_name', read_only=True)
+    scientific_name = serializers.CharField(source='plant.scientific_name', read_only=True)
+    local_names = serializers.StringRelatedField(source='plant.plant_names', many=True, read_only=True)
+
     class Meta:
         model = MedicinalPlant
-        fields = '__all__'
+        fields = ( 'plant', 'english_name', 'scientific_name', 'local_names', 'health_issues', 'part_used_for_health_issues',
+                  'preparation_steps', 'dosage', 'contraindications', 'shelf_life', 'notes')
