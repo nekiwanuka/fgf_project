@@ -82,6 +82,7 @@ class PlantName(models.Model):
         return f"{self.local_name} ({self.language})"
 
 class MedicinalPlant(models.Model):
+    medicinal_values_entered = models.BooleanField(default=False)
     health_issues = models.TextField(blank=True, help_text='Add multiple health issues, separated by commas')
     part_used_for_health_issues = models.TextField(blank=True, help_text='Part of the plant used for each health issue')
     preparation_steps = models.TextField(blank=True, help_text='Preparation steps for each health issue')
@@ -90,15 +91,24 @@ class MedicinalPlant(models.Model):
     shelf_life = models.CharField(max_length=100, blank=True, help_text='Shelf life of the prepared medicine')
     notes = models.TextField(blank=True, help_text='Additional notes for medicinal values')
     plant = models.OneToOneField(Plant, on_delete=models.CASCADE, null=True, blank=True)
+    
+    
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.medicinal_values_entered = True  # Assume medicinal values have been entered if it's a new instance
-        super().save(*args, **kwargs)
+        # Check if medicinal values are provided and update the flag accordingly
+        self.medicinal_values_entered = bool(
+            self.health_issues
+            or self.part_used_for_health_issues
+            or self.preparation_steps
+            or self.dosage
+            or self.contraindications
+            or self.shelf_life
+            or self.notes
+        )
+        # Ensure only one entry per plant
+        if self.id and MedicinalPlant.objects.filter(plant=self.plant).exclude(id=self.id).exists():
+            raise ValueError("A medicinal values entry already exists for this plant. Update the existing entry.")
 
-    # def __str__(self):
-    #     return f"Medicinal Plant: {self.english_name}, ID: {self.id}"
-    # class MedicinalPlant(models.Model):
-    # # ... other fields and methods
+        super().save(*args, **kwargs)
 
     def __str__(self):
         # Access related fields and return the desired representation
@@ -106,6 +116,4 @@ class MedicinalPlant(models.Model):
         scientific_name = self.plant.scientific_name if self.plant else "No Scientific Name"
         local_names = ', '.join([plant_name.local_name for plant_name in self.plant.plant_names.all()]) if self.plant else "No Local Names"
         
-        return f"Medicinal Plant: English Name: {english_name}, Scientific Name: {scientific_name}, Local Names: {local_names}, ID: {self.id}"
-
-    
+        return f"Medicinal Plant: English Name: {english_name}, Scientific Name: {scientific_name}, Local Names: {local_names},"
