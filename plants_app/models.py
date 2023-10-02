@@ -51,10 +51,10 @@ class Plant(models.Model):
     publish_preference = models.CharField(max_length=20, choices=PublishPreference.choices, blank=True, null=True)
 
     def __str__(self):
-        return self.english_name
+        return f"{self.english_name} {self.scientific_name}"
 
 class PlantLocalName(models.Model):
-    plant = models.ForeignKey(Plant, related_name='plant_names', on_delete=models.CASCADE)
+    plant = models.ForeignKey(Plant, related_name='plant_local_names', on_delete=models.CASCADE)
     local_name = models.CharField(max_length=100)
     language = models.CharField(max_length=100)
 
@@ -90,8 +90,4 @@ class MedicinalPlant(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        english_name = self.plant.english_name if self.plant else "No English Name"
-        scientific_name = self.plant.scientific_name if self.plant else "No Scientific Name"
-        local_names = ', '.join([plant_name.local_name for plant_name in self.plant.plant_names.all()]) if self.plant else "No Local Names"
-        
-        return f"Medicinal Plant: English Name: {english_name}, Scientific Name: {scientific_name}, Local Names: {local_names},"
+        return f"Medicinal Plant: {self.plant.english_name if self.plant else 'No English Name'}, {self.plant.scientific_name if self.plant else 'No Scientific Name'}"

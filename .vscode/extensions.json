@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "thebarkman.vscode-djaneiro"
+    "thebarkman.vscode-djaneiro",
+    "rubymaniac.vscode-paste-and-indent"
   ]
 }

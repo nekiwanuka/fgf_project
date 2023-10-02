@@ -5,4 +5,4 @@ from . import models
 
 admin.site.register(models.Plant)
 admin.site.register(models.MedicinalPlant)
-admin.site.register(models.PlantName)
+admin.site.register(models.PlantLocalName)

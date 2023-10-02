@@ -5,7 +5,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Plant, PlantLocalName, MedicinalPlant
 from .serializers import PlantSerializer, PlantLocalNameSerializer, MedicinalPlantSerializer
 
-
 class PlantViewSet(viewsets.ModelViewSet):
     queryset = Plant.objects.all()
     serializer_class = PlantSerializer
@@ -26,13 +25,11 @@ class PlantViewSet(viewsets.ModelViewSet):
         else:
             return Response({"error": "Both local name and language are required."}, status=status.HTTP_400_BAD_REQUEST)
 
-
 class PlantLocalNameViewSet(viewsets.ModelViewSet):
     queryset = PlantLocalName.objects.all()
     serializer_class = PlantLocalNameSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['local_name', 'language']
-
 
 class MedicinalPlantViewSet(viewsets.ModelViewSet):
     queryset = MedicinalPlant.objects.all()
