@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     "bootstrap4",
     "drf_spectacular",
     "django_filters",
-    "phonenumber_field",
+    'phonenumber_field',
+    'django_countries',
 
 ]
 

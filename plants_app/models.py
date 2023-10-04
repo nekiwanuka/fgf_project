@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from phonenumber_field.modelfields import PhoneNumberField
+
 
 class Region(models.TextChoices):
     NORTHERN_UGANDA = 'Northern Uganda', 'Northern Uganda'
@@ -46,6 +46,7 @@ class Plant(models.Model):
     videos = models.FileField(null=True, blank=True, upload_to='media_files')
     audio = models.FileField(null=True, blank=True, upload_to='media_files')
     contributor_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    phone_number = models.CharField(max_length=250, blank=True, null=True)
     citation = models.CharField(max_length=250)
     date_entered = models.DateTimeField(auto_now_add=True)
     publish_preference = models.CharField(max_length=20, choices=PublishPreference.choices, blank=True, null=True)
