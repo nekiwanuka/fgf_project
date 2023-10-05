@@ -1,45 +1,41 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
 
-class AnimalClassification(models.Model): # Kingdom
+class AnimalClassification(models.Model):
     kingdom_name = models.CharField(max_length=250)
     species = models.CharField(max_length=250)
     number_of_species = models.IntegerField(default=1, null=True)
     animal_class = models.CharField(max_length=250)
     order = models.CharField(max_length=250)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.animal_class
 
 class Animal(models.Model):
-    local_name = models.CharField(max_length=250)
     english_name = models.CharField(max_length=250)
     scientific_name = models.CharField(max_length=250)
     description = models.CharField(max_length=250)
-    area_in_Uganda = models.CharField(max_length=250)
+    areas_in_Uganda = models.CharField(max_length=250)
     animal_classifications = models.ForeignKey(AnimalClassification, on_delete=models.SET_NULL, null=True)
-    economic_value = models.CharField(max_length=250)
+    known_values = models.CharField(max_length=250)
+    value_details = models.CharField(max_length=250)
+    unique_habitat = models.CharField(max_length=250)
     threats = models.CharField(max_length=250)
-    habitat = models.CharField(max_length=250)
     notes = models.CharField(max_length=250)
-    images = models.ImageField(null=True, blank=True)
-    videos = models.FileField(upload_to='media_files', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
+    video = models.FileField(upload_to='media_files', null=True, blank=True)
     audio = models.FileField(upload_to='media_files', null=True, blank=True)
     contributor_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
     citation = models.CharField(max_length=250)
     date_entered = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self) -> str:
-        return self.local_name
-    
-    class Meta:
-        ordering = ['local_name']
-    
-    #Calculate entries
-    @classmethod
-    def compute_animal_entries(cls):
-        """
-        Computes the total number of animal entries.
-        """
-        return cls.objects.count()
+    def __str__(self):
+        return f"{self.english_name} ({self.scientific_name})"
+
+class AnimalLocalName(models.Model):
+    local_name = models.CharField(max_length=250)
+    language = models.CharField(max_length=250)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='local_names')
+
+    def __str__(self):
+        return f"{self.local_name} ({self.language}) for {self.animal.english_name} ({self.animal.scientific_name})"

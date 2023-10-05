@@ -17,7 +17,7 @@ class Clan(models.Model):
     reserved_female_names  = models.CharField(max_length=250) #Meaning  = models.CharField(max_length=250) 
     taboos = models.CharField(max_length=250)   
     lead_god = models.CharField(max_length=250) #should we add a model for this?
-    other_deities = models.CharField(max_length=250) #roles  = models.CharField(max_length=250) 
+    other_gods = models.CharField(max_length=250) #roles  = models.CharField(max_length=250) 
     images = models.ImageField(null=True, blank=True)
     videos = models.FileField(upload_to='media_files', null=True, blank=True)
     audio = models.FileField(upload_to='media_files', null=True, blank=True)
@@ -53,8 +53,8 @@ class Ethnicity(models.Model):
     ceremonies = models.CharField(max_length=250)
     kingdom = models.ForeignKey(CulturalKingdom, on_delete=models.SET_NULL, null=True)
     chiefdom = models.CharField(max_length=250)
-    images = models.ImageField(null=True, blank=True)
-    videos = models.FileField(upload_to='media_files', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
+    video = models.FileField(upload_to='media_files', null=True, blank=True)
     audio = models.FileField(upload_to='media_files', null=True, blank=True)
     contributor_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
     citation = models.CharField(max_length=250)
@@ -71,9 +71,9 @@ class EthnicGroup(models.Model):
     number_of_kingdoms = models.IntegerField(default=1, null=True)
     ethnicity_name = models.ForeignKey(Ethnicity, on_delete=models.SET_NULL, null=True)
 
-    def compute_cultural_entries():
-        pass
+    def total_entries(self):
 
+        return Clan.objects.filter(clan_name=self.clan_name).count()
 
 class CulturalIdentity(models.Model):
     ethnic_group = models.ForeignKey(EthnicGroup, on_delete=models.SET_NULL, null=True)

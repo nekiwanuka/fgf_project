@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+#import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,11 +48,11 @@ INSTALLED_APPS = [
     "animals_app",
     "cultures_app",
     "rest_framework",
-    "bootstrap4",
-    "drf_spectacular",
     "django_filters",
-    'phonenumber_field',
-    'django_countries',
+    "bootstrap4",
+    'drf_spectacular'
+    
+    
 
 ]
 
@@ -101,8 +101,19 @@ DATABASES = {
 "default": {
     "ENGINE": "django.db.backends.sqlite3",
     "NAME": BASE_DIR / "db.sqlite3",
-     }
- }
+    
+    # 'ENGINE': 'django.db.backends.postgresql',
+    # 'NAME': 'fgf-db',
+    # 'USER': 'fgf-app',
+    # 'PASSWORD': 'fgf=password',
+    # 'HOST': 'localhost',
+    # 'PORT': '5432',
+    
+    }
+}
+
+     
+ 
 
 #DATABASES['default'] = dj_database_url.parse('postgres://fgf_database_user:Hqa4PKjnQGZa33ErpfAYCRpSujZmyp7M@dpg-cka1lbev3ddc739sufb0-a.oregon-postgres.render.com/fgf_database')
 # Password validation
