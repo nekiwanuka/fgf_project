@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "bootstrap4",
-    'drf_spectacular'
+    'drf_spectacular',
+    'corsheaders',
     
     
 
@@ -64,7 +65,14 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.middleware.csrf.CsrfViewMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    # Add the allowed origins (e.g., frontend URLs)
+    'https://fgf-project-frontend.vercel.app',
 ]
 
 ROOT_URLCONF = "fgf.urls"
@@ -150,8 +158,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # FOR deployment
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# FOR deployment
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
