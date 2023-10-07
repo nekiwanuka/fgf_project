@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Pull the Docker image
                 script {
+                    // Pull the Docker image
                     docker.image('nekiwanuka/fgf-app-drepo').pull()
                 }
             }
@@ -13,8 +13,8 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Run tests for your Django application within the Docker container
                 script {
+                    // Run tests for your Django application within the Docker container
                     docker.image('nekiwanuka/fgf-app-drepo').inside('-p 8000:8000') {
                         sh 'python manage.py test'
                     }
@@ -24,8 +24,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Run the Docker container
                 script {
+                    // Run the Docker container
                     docker.image('nekiwanuka/fgf-app-drepo').run('-p 8000:8000 -d')
                 }
             }
