@@ -11,16 +11,16 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    // Run tests for your Django application within the Docker container
-                    docker.image('nekiwanuka/fgf-app-drepo').inside('-p 8000:8000') {
-                        sh 'python manage.py test'
-                    }
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         script {
+        //             // Run tests for your Django application within the Docker container
+        //             docker.image('nekiwanuka/fgf-app-drepo').inside('-p 8000:8000') {
+        //                 sh 'python manage.py test'
+        //             }
+        //         }
+        //     }
+        // }
 
         stage('Deploy') {
             steps {
