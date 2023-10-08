@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     "cultures_app",
     "rest_framework",
     "django_filters",
-    "bootstrap4",
     'drf_spectacular',
     'corsheaders',
     
