@@ -71,7 +71,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     # Add the allowed origins (e.g., frontend URLs)
-    'https://fgf-project-frontend.vercel.app',
+    'https://fgf-project-frontend.vercel.app', 'http://localhost:5173',
 ]
 
 ROOT_URLCONF = "fgf.urls"
