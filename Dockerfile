@@ -6,14 +6,14 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set the working directory in the container
-WORKDIR /fgf
+WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt /fgf/requirements.txt
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the project code into the container
-COPY . /fgf/
+COPY . /app/
 
 # Expose the port that the application will run on
 EXPOSE 8000
