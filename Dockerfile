@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt /app/
+COPY requirements.txt /fgf/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the project code into the container
