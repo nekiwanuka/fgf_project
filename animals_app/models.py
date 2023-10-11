@@ -33,9 +33,9 @@ class Animal(models.Model):
         return f"{self.english_name} ({self.scientific_name})"
 
 class AnimalLocalName(models.Model):
-    local_name = models.CharField(max_length=250)
+    animal_name = models.CharField(max_length=250)
     language = models.CharField(max_length=250)
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='local_names')
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_names')
 
     def __str__(self):
-        return f"{self.local_name} ({self.language}) for {self.animal.english_name} ({self.animal.scientific_name})"
+        return f"{self.animal_name} ({self.language}) for {self.animal.english_name} ({self.animal.scientific_name})"

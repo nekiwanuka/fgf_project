@@ -1,115 +1,46 @@
-from rest_framework import generics
+from rest_framework import generics, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
-from django_filters import rest_framework as filters
-from django_filters import filters
-from rest_framework.permissions import IsAuthenticated
-from .models import (
-    Region,
-    LifeForm,
-    Value,
-    ValueDetail,
-    OtherValueDetail,
-    Plant,
-    PlantLocalName,
-    MedicinalPlant
-)
-from .serializers import (
-    RegionSerializer,
-    LifeFormSerializer,
-    ValueSerializer,
-    ValueDetailSerializer,
-    OtherValueDetailSerializer,
-    PlantSerializer,
-    PlantLocalNameSerializer,
-    MedicinalPlantSerializer
-)
+from .models import Plant, MedicinalPlant
+from .serializers import PlantSerializer, MedicinalPlantSerializer
+from .filters import PlantFilter, MedicinalPlantFilter
 
-class RegionListView(generics.ListCreateAPIView):
-    queryset = Region.objects.all()
-    serializer_class = RegionSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class RegionDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Region.objects.all()
-    serializer_class = RegionSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class LifeFormListView(generics.ListCreateAPIView):
-    queryset = LifeForm.objects.all()
-    serializer_class = LifeFormSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class LifeFormDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = LifeForm.objects.all()
-    serializer_class = LifeFormSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class ValueListView(generics.ListCreateAPIView):
-    queryset = Value.objects.all()
-    serializer_class = ValueSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class ValueDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Value.objects.all()
-    serializer_class = ValueSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class ValueDetailListView(generics.ListCreateAPIView):
-    queryset = ValueDetail.objects.all()
-    serializer_class = ValueDetailSerializer
-    permission_classes = [IsAuthenticated]
-
-class ValueDetailDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ValueDetail.objects.all()
-    serializer_class = ValueDetailSerializer
-    permission_classes = [IsAuthenticated]
-
-class OtherValueDetailListView(generics.ListCreateAPIView):
-    queryset = OtherValueDetail.objects.all()
-    serializer_class = OtherValueDetailSerializer
-    permission_classes = [IsAuthenticated]
-
-class OtherValueDetailDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = OtherValueDetail.objects.all()
-    serializer_class = OtherValueDetailSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
-
-class PlantListView(generics.ListCreateAPIView):
-    queryset = Plant.objects.all()
-    serializer_class = PlantSerializer
-    permission_classes = [IsAuthenticated]
-
-class PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Plant.objects.all()
-    serializer_class = PlantSerializer
-    permission_classes = [IsAuthenticated]
-
-class PlantLocalNameListView(generics.ListCreateAPIView):
-    queryset = PlantLocalName.objects.all()
-    serializer_class = PlantLocalNameSerializer
-    permission_classes = [IsAuthenticated]
-
-class PlantLocalNameDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = PlantLocalName.objects.all()
-    serializer_class = PlantLocalNameSerializer
-    filter_backends = [DjangoFilterBackend]
-    permission_classes = [IsAuthenticated]
+# ... Existing imports ...
 
 class MedicinalPlantListView(generics.ListCreateAPIView):
     queryset = MedicinalPlant.objects.all()
     serializer_class = MedicinalPlantSerializer
-    permission_classes = [IsAuthenticated]
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filterset_class = MedicinalPlantFilter
+    search_fields = ['health_issues', 'part_used']
 
 class MedicinalPlantDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MedicinalPlant.objects.all()
     serializer_class = MedicinalPlantSerializer
-    permission_classes = [IsAuthenticated]
+
+class PlantListView(generics.ListCreateAPIView):
+    queryset = Plant.objects.all()
+    serializer_class = PlantSerializer
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filterset_class = PlantFilter
+    search_fields = ['region_in_Uganda', 'habitat']
+
+class PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Plant.objects.all()
+    serializer_class = PlantSerializer
+
+class CalculateMedicinalPlantsCount(APIView):
+    serializer_class = MedicinalPlantSerializer
+
+    def get(self, request, *args, **kwargs):
+        medicinal_plants_count = MedicinalPlant.objects.count()
+        return Response({'medicinal_plants_count': medicinal_plants_count}, status=status.HTTP_200_OK)
+
+class CalculatePlantsCount(APIView):
+    serializer_class = PlantSerializer
+
+    def get(self, request, *args, **kwargs):
+        plants_count = Plant.objects.count()
+        return Response({'plants_count': plants_count}, status=status.HTTP_200_OK)

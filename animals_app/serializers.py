@@ -23,3 +23,9 @@ class AnimalSerializer(serializers.ModelSerializer):
             'image', 'video', 'audio', 'contributor_name', 'citation', 'date_entered',
             'local_names', 'animal_classifications'
         ]
+
+
+class CountEntriesSerializer(serializers.Serializer):
+    total_animal_count = serializers.IntegerField()
+    total_classification_count = serializers.IntegerField()
+    total_species_count = serializers.IntegerField()

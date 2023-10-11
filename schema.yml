@@ -1,0 +1,5012 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /administrators/:
+    get:
+      operationId: administrators_list
+      tags:
+      - administrators
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Administrator'
+          description: ''
+    post:
+      operationId: administrators_create
+      tags:
+      - administrators
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Administrator'
+          description: ''
+  /administrators/{id}/:
+    get:
+      operationId: administrators_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - administrators
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Administrator'
+          description: ''
+    put:
+      operationId: administrators_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - administrators
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Administrator'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Administrator'
+          description: ''
+    patch:
+      operationId: administrators_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - administrators
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAdministrator'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAdministrator'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAdministrator'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Administrator'
+          description: ''
+    delete:
+      operationId: administrators_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - administrators
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /animal-classifications/:
+    get:
+      operationId: animal_classifications_list
+      tags:
+      - animal-classifications
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    post:
+      operationId: animal_classifications_create
+      tags:
+      - animal-classifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+  /animal-classifications/{id}/:
+    get:
+      operationId: animal_classifications_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-classifications
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    put:
+      operationId: animal_classifications_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-classifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    patch:
+      operationId: animal_classifications_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-classifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalClassification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalClassification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalClassification'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    delete:
+      operationId: animal_classifications_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-classifications
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /animal-local-names/:
+    get:
+      operationId: animal_local_names_list
+      tags:
+      - animal-local-names
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    post:
+      operationId: animal_local_names_create
+      tags:
+      - animal-local-names
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+  /animal-local-names/{id}/:
+    get:
+      operationId: animal_local_names_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-local-names
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    put:
+      operationId: animal_local_names_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-local-names
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    patch:
+      operationId: animal_local_names_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-local-names
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalLocalName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalLocalName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalLocalName'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    delete:
+      operationId: animal_local_names_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animal-local-names
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /animals/:
+    get:
+      operationId: animals_list
+      tags:
+      - animals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Animal'
+          description: ''
+    post:
+      operationId: animals_create
+      tags:
+      - animals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Animal'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+  /animals/{id}/:
+    get:
+      operationId: animals_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+    put:
+      operationId: animals_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Animal'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+    patch:
+      operationId: animals_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimal'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+    delete:
+      operationId: animals_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - animals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/animals/animal-classifications/:
+    get:
+      operationId: api_animals_animal_classifications_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    post:
+      operationId: api_animals_animal_classifications_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+  /api/animals/animal-classifications/{id}/:
+    get:
+      operationId: api_animals_animal_classifications_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    put:
+      operationId: api_animals_animal_classifications_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalClassification'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    patch:
+      operationId: api_animals_animal_classifications_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalClassification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalClassification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalClassification'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalClassification'
+          description: ''
+    delete:
+      operationId: api_animals_animal_classifications_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/animals/animal-local-names/:
+    get:
+      operationId: api_animals_animal_local_names_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    post:
+      operationId: api_animals_animal_local_names_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+  /api/animals/animal-local-names/{id}/:
+    get:
+      operationId: api_animals_animal_local_names_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    put:
+      operationId: api_animals_animal_local_names_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnimalLocalName'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    patch:
+      operationId: api_animals_animal_local_names_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalLocalName'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalLocalName'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimalLocalName'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimalLocalName'
+          description: ''
+    delete:
+      operationId: api_animals_animal_local_names_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/animals/animals/:
+    get:
+      operationId: api_animals_animals_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Animal'
+          description: ''
+    post:
+      operationId: api_animals_animals_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Animal'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+  /api/animals/animals/{id}/:
+    get:
+      operationId: api_animals_animals_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+    put:
+      operationId: api_animals_animals_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Animal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Animal'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+    patch:
+      operationId: api_animals_animals_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnimal'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Animal'
+          description: ''
+    delete:
+      operationId: api_animals_animals_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/animals/count-entries/:
+    get:
+      operationId: api_animals_count_entries_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountEntries'
+          description: ''
+  /api/calculate-medicinal-plants-count/:
+    get:
+      operationId: api_calculate_medicinal_plants_count_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+  /api/calculate-plants-count/:
+    get:
+      operationId: api_calculate_plants_count_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+  /api/cultures/cultures/:
+    get:
+      operationId: api_cultures_cultures_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    post:
+      operationId: api_cultures_cultures_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+  /api/cultures/cultures/{id}/:
+    get:
+      operationId: api_cultures_cultures_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    put:
+      operationId: api_cultures_cultures_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    patch:
+      operationId: api_cultures_cultures_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalIdentity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalIdentity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalIdentity'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    delete:
+      operationId: api_cultures_cultures_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/cultures/cultures/clans/:
+    get:
+      operationId: api_cultures_cultures_clans_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Clan'
+          description: ''
+    post:
+      operationId: api_cultures_cultures_clans_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Clan'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+  /api/cultures/cultures/clans/{id}/:
+    get:
+      operationId: api_cultures_cultures_clans_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+    put:
+      operationId: api_cultures_cultures_clans_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Clan'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+    patch:
+      operationId: api_cultures_cultures_clans_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClan'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+    delete:
+      operationId: api_cultures_cultures_clans_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/cultures/cultures/cultural_kingdom/:
+    get:
+      operationId: api_cultures_cultures_cultural_kingdom_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    post:
+      operationId: api_cultures_cultures_cultural_kingdom_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+  /api/cultures/cultures/cultural_kingdom/{kingdom_name}/:
+    get:
+      operationId: api_cultures_cultures_cultural_kingdom_retrieve
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    put:
+      operationId: api_cultures_cultures_cultural_kingdom_update
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    patch:
+      operationId: api_cultures_cultures_cultural_kingdom_partial_update
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalKingdom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalKingdom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalKingdom'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    delete:
+      operationId: api_cultures_cultures_cultural_kingdom_destroy
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/cultures/cultures/ethnic_groups/:
+    get:
+      operationId: api_cultures_cultures_ethnic_groups_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    post:
+      operationId: api_cultures_cultures_ethnic_groups_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+  /api/cultures/cultures/ethnic_groups/{id}/:
+    get:
+      operationId: api_cultures_cultures_ethnic_groups_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    put:
+      operationId: api_cultures_cultures_ethnic_groups_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    patch:
+      operationId: api_cultures_cultures_ethnic_groups_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicGroup'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    delete:
+      operationId: api_cultures_cultures_ethnic_groups_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/cultures/cultures/ethnicities/:
+    get:
+      operationId: api_cultures_cultures_ethnicities_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    post:
+      operationId: api_cultures_cultures_ethnicities_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+  /api/cultures/cultures/ethnicities/{ethnicity_name}/:
+    get:
+      operationId: api_cultures_cultures_ethnicities_retrieve
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    put:
+      operationId: api_cultures_cultures_ethnicities_update
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    patch:
+      operationId: api_cultures_cultures_ethnicities_partial_update
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicity'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    delete:
+      operationId: api_cultures_cultures_ethnicities_destroy
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/medicinal-plants/:
+    get:
+      operationId: api_medicinal_plants_list
+      parameters:
+      - in: query
+        name: health_issues__icontains
+        schema:
+          type: string
+      - in: query
+        name: part_used
+        schema:
+          type: string
+      - in: query
+        name: part_used__icontains
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    post:
+      operationId: api_medicinal_plants_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+  /api/medicinal-plants/{id}/:
+    get:
+      operationId: api_medicinal_plants_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    put:
+      operationId: api_medicinal_plants_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    patch:
+      operationId: api_medicinal_plants_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicinalPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicinalPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicinalPlant'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    delete:
+      operationId: api_medicinal_plants_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/plants/:
+    get:
+      operationId: api_plants_list
+      parameters:
+      - in: query
+        name: habitat
+        schema:
+          type: string
+      - in: query
+        name: habitat__icontains
+        schema:
+          type: string
+      - in: query
+        name: life_form
+        schema:
+          type: string
+          enum:
+          - climber
+          - forest
+          - grassland
+          - herb
+          - meadow
+          - shrub
+          - tree
+        description: |-
+          * `forest` - Forest
+          * `meadow` - Meadow
+          * `climber` - Climber
+          * `grassland` - Grassland
+          * `herb` - Herb
+          * `shrub` - Shrub
+          * `tree` - Tree
+      - in: query
+        name: region_in_Uganda
+        schema:
+          type: string
+      - in: query
+        name: region_in_Uganda__icontains
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plant'
+          description: ''
+    post:
+      operationId: api_plants_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Plant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+  /api/plants/{id}/:
+    get:
+      operationId: api_plants_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+    put:
+      operationId: api_plants_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Plant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+    patch:
+      operationId: api_plants_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPlant'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+    delete:
+      operationId: api_plants_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/plants/api/calculate-medicinal-plants-count/:
+    get:
+      operationId: api_plants_api_calculate_medicinal_plants_count_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+  /api/plants/api/calculate-plants-count/:
+    get:
+      operationId: api_plants_api_calculate_plants_count_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+  /api/plants/api/medicinal-plants/:
+    get:
+      operationId: api_plants_api_medicinal_plants_list
+      parameters:
+      - in: query
+        name: health_issues__icontains
+        schema:
+          type: string
+      - in: query
+        name: part_used
+        schema:
+          type: string
+      - in: query
+        name: part_used__icontains
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    post:
+      operationId: api_plants_api_medicinal_plants_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+  /api/plants/api/medicinal-plants/{id}/:
+    get:
+      operationId: api_plants_api_medicinal_plants_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    put:
+      operationId: api_plants_api_medicinal_plants_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MedicinalPlant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    patch:
+      operationId: api_plants_api_medicinal_plants_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicinalPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicinalPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicinalPlant'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicinalPlant'
+          description: ''
+    delete:
+      operationId: api_plants_api_medicinal_plants_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/plants/api/plants/:
+    get:
+      operationId: api_plants_api_plants_list
+      parameters:
+      - in: query
+        name: habitat
+        schema:
+          type: string
+      - in: query
+        name: habitat__icontains
+        schema:
+          type: string
+      - in: query
+        name: life_form
+        schema:
+          type: string
+          enum:
+          - climber
+          - forest
+          - grassland
+          - herb
+          - meadow
+          - shrub
+          - tree
+        description: |-
+          * `forest` - Forest
+          * `meadow` - Meadow
+          * `climber` - Climber
+          * `grassland` - Grassland
+          * `herb` - Herb
+          * `shrub` - Shrub
+          * `tree` - Tree
+      - in: query
+        name: region_in_Uganda
+        schema:
+          type: string
+      - in: query
+        name: region_in_Uganda__icontains
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plant'
+          description: ''
+    post:
+      operationId: api_plants_api_plants_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Plant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+  /api/plants/api/plants/{id}/:
+    get:
+      operationId: api_plants_api_plants_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+    put:
+      operationId: api_plants_api_plants_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Plant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Plant'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+    patch:
+      operationId: api_plants_api_plants_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPlant'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPlant'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPlant'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plant'
+          description: ''
+    delete:
+      operationId: api_plants_api_plants_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /contributors/:
+    get:
+      operationId: contributors_list
+      tags:
+      - contributors
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contributor'
+          description: ''
+    post:
+      operationId: contributors_create
+      tags:
+      - contributors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contributor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contributor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contributor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contributor'
+          description: ''
+  /contributors/{id}/:
+    get:
+      operationId: contributors_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - contributors
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contributor'
+          description: ''
+    put:
+      operationId: contributors_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - contributors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contributor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contributor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contributor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contributor'
+          description: ''
+    patch:
+      operationId: contributors_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - contributors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedContributor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedContributor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedContributor'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contributor'
+          description: ''
+    delete:
+      operationId: contributors_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - contributors
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /count-entries/:
+    get:
+      operationId: count_entries_retrieve
+      tags:
+      - count-entries
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountEntries'
+          description: ''
+  /cultures/:
+    get:
+      operationId: cultures_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    post:
+      operationId: cultures_create
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+  /cultures/{id}/:
+    get:
+      operationId: cultures_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    put:
+      operationId: cultures_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalIdentity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    patch:
+      operationId: cultures_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalIdentity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalIdentity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalIdentity'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalIdentity'
+          description: ''
+    delete:
+      operationId: cultures_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /cultures/clans/:
+    get:
+      operationId: cultures_clans_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Clan'
+          description: ''
+    post:
+      operationId: cultures_clans_create
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Clan'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+  /cultures/clans/{id}/:
+    get:
+      operationId: cultures_clans_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+    put:
+      operationId: cultures_clans_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Clan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Clan'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+    patch:
+      operationId: cultures_clans_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClan'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clan'
+          description: ''
+    delete:
+      operationId: cultures_clans_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /cultures/cultural_kingdom/:
+    get:
+      operationId: cultures_cultural_kingdom_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    post:
+      operationId: cultures_cultural_kingdom_create
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+  /cultures/cultural_kingdom/{kingdom_name}/:
+    get:
+      operationId: cultures_cultural_kingdom_retrieve
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    put:
+      operationId: cultures_cultural_kingdom_update
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CulturalKingdom'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    patch:
+      operationId: cultures_cultural_kingdom_partial_update
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalKingdom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalKingdom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCulturalKingdom'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalKingdom'
+          description: ''
+    delete:
+      operationId: cultures_cultural_kingdom_destroy
+      parameters:
+      - in: path
+        name: kingdom_name
+        schema:
+          type: string
+        description: A unique value identifying this cultural kingdom.
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /cultures/ethnic_groups/:
+    get:
+      operationId: cultures_ethnic_groups_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    post:
+      operationId: cultures_ethnic_groups_create
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+  /cultures/ethnic_groups/{id}/:
+    get:
+      operationId: cultures_ethnic_groups_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    put:
+      operationId: cultures_ethnic_groups_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EthnicGroup'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    patch:
+      operationId: cultures_ethnic_groups_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicGroup'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EthnicGroup'
+          description: ''
+    delete:
+      operationId: cultures_ethnic_groups_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /cultures/ethnicities/:
+    get:
+      operationId: cultures_ethnicities_list
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    post:
+      operationId: cultures_ethnicities_create
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+  /cultures/ethnicities/{ethnicity_name}/:
+    get:
+      operationId: cultures_ethnicities_retrieve
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    put:
+      operationId: cultures_ethnicities_update
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ethnicity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    patch:
+      operationId: cultures_ethnicities_partial_update
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - cultures
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEthnicity'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ethnicity'
+          description: ''
+    delete:
+      operationId: cultures_ethnicities_destroy
+      parameters:
+      - in: path
+        name: ethnicity_name
+        schema:
+          type: string
+        description: A unique value identifying this ethnicity.
+        required: true
+      tags:
+      - cultures
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /users/:
+    get:
+      operationId: users_list
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: users_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/{Id}/:
+    get:
+      operationId: users_retrieve
+      parameters:
+      - in: path
+        name: Id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_update
+      parameters:
+      - in: path
+        name: Id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_partial_update
+      parameters:
+      - in: path
+        name: Id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_destroy
+      parameters:
+      - in: path
+        name: Id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Administrator:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: uuid
+      required:
+      - user
+    Animal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        english_name:
+          type: string
+          maxLength: 250
+        scientific_name:
+          type: string
+          maxLength: 250
+        description:
+          type: string
+          maxLength: 250
+        areas_in_Uganda:
+          type: string
+          maxLength: 250
+        known_values:
+          type: string
+          maxLength: 250
+        value_details:
+          type: string
+          maxLength: 250
+        unique_habitat:
+          type: string
+          maxLength: 250
+        threats:
+          type: string
+          maxLength: 250
+        notes:
+          type: string
+          maxLength: 250
+        image:
+          type: string
+          format: uri
+          nullable: true
+        video:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        contributor_name:
+          type: integer
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        local_names:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnimalLocalName'
+          readOnly: true
+        animal_classifications:
+          allOf:
+          - $ref: '#/components/schemas/AnimalClassification'
+          readOnly: true
+      required:
+      - animal_classifications
+      - areas_in_Uganda
+      - citation
+      - date_entered
+      - description
+      - english_name
+      - id
+      - known_values
+      - local_names
+      - notes
+      - scientific_name
+      - threats
+      - unique_habitat
+      - value_details
+    AnimalClassification:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        kingdom_name:
+          type: string
+          maxLength: 250
+        species:
+          type: string
+          maxLength: 250
+        number_of_species:
+          type: integer
+          nullable: true
+        animal_class:
+          type: string
+          maxLength: 250
+        order:
+          type: string
+          maxLength: 250
+      required:
+      - animal_class
+      - id
+      - kingdom_name
+      - order
+      - species
+    AnimalLocalName:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        animal_name:
+          type: string
+          maxLength: 250
+        language:
+          type: string
+          maxLength: 250
+        animal:
+          type: integer
+      required:
+      - animal
+      - animal_name
+      - id
+      - language
+    BlankEnum:
+      enum:
+      - ''
+    Clan:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        clan_name:
+          type: string
+          maxLength: 250
+        clan_seat:
+          type: string
+          maxLength: 250
+        totem:
+          type: string
+          maxLength: 250
+        secondary_totem:
+          type: string
+          maxLength: 250
+        clan_history:
+          type: string
+          maxLength: 250
+        clan_leader_title:
+          type: string
+          maxLength: 250
+        clan_leader_name:
+          type: string
+          maxLength: 250
+        cultural_sites:
+          type: string
+          maxLength: 250
+        male_names:
+          type: string
+          maxLength: 250
+        female_names:
+          type: string
+          maxLength: 250
+        reserved_male_names:
+          type: string
+          maxLength: 250
+        reserved_female_names:
+          type: string
+          maxLength: 250
+        taboos:
+          type: string
+          maxLength: 250
+        lead_god:
+          type: string
+          maxLength: 250
+        other_gods:
+          type: string
+          maxLength: 250
+        images:
+          type: string
+          format: uri
+          nullable: true
+        videos:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        contributor_name:
+          type: integer
+          nullable: true
+      required:
+      - citation
+      - clan_history
+      - clan_leader_name
+      - clan_leader_title
+      - clan_name
+      - clan_seat
+      - cultural_sites
+      - date_entered
+      - female_names
+      - id
+      - lead_god
+      - male_names
+      - other_gods
+      - reserved_female_names
+      - reserved_male_names
+      - secondary_totem
+      - taboos
+      - totem
+    Contributor:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: uuid
+      required:
+      - user
+    CountEntries:
+      type: object
+      properties:
+        total_animal_count:
+          type: integer
+        total_classification_count:
+          type: integer
+        total_species_count:
+          type: integer
+      required:
+      - total_animal_count
+      - total_classification_count
+      - total_species_count
+    CulturalIdentity:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        notes:
+          type: string
+          maxLength: 250
+        images:
+          type: string
+          format: uri
+          nullable: true
+        videos:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        ethnic_group:
+          type: integer
+          nullable: true
+        contributor_name:
+          type: integer
+          nullable: true
+      required:
+      - citation
+      - date_entered
+      - id
+      - notes
+    CulturalKingdom:
+      type: object
+      properties:
+        kingdom_name:
+          type: string
+          maxLength: 250
+        title_of_leader:
+          type: string
+          maxLength: 250
+        current_king:
+          type: string
+          maxLength: 250
+        current_chief_name:
+          type: string
+          maxLength: 250
+        images:
+          type: string
+          format: uri
+          nullable: true
+        videos:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        number_of_clans:
+          type: integer
+          nullable: true
+        clan_name:
+          type: integer
+          nullable: true
+      required:
+      - current_chief_name
+      - current_king
+      - kingdom_name
+      - title_of_leader
+    EthnicGroup:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ethnic_group_name:
+          type: string
+          maxLength: 250
+        region_in_Uganda:
+          type: string
+          maxLength: 250
+        number_of_ethnicities:
+          type: integer
+          nullable: true
+        number_of_languages:
+          type: integer
+          nullable: true
+        number_of_kingdoms:
+          type: integer
+          nullable: true
+        ethnicity_name:
+          type: string
+          nullable: true
+      required:
+      - ethnic_group_name
+      - id
+      - region_in_Uganda
+    Ethnicity:
+      type: object
+      properties:
+        ethnicity_name:
+          type: string
+          maxLength: 250
+        region_in_Uganda:
+          type: string
+          maxLength: 250
+        language:
+          type: string
+          maxLength: 250
+        food:
+          type: string
+          maxLength: 250
+        staple_food:
+          type: string
+          maxLength: 250
+        cuisine:
+          type: string
+          maxLength: 250
+        cashcrop:
+          type: string
+          maxLength: 250
+        universal_worship:
+          type: string
+          maxLength: 250
+        denominations:
+          type: string
+          maxLength: 250
+        universal_rituals:
+          type: string
+          maxLength: 250
+        ceremonies:
+          type: string
+          maxLength: 250
+        chiefdom:
+          type: string
+          maxLength: 250
+        image:
+          type: string
+          format: uri
+          nullable: true
+        video:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        kingdom:
+          type: string
+          nullable: true
+        contributor_name:
+          type: integer
+          nullable: true
+      required:
+      - cashcrop
+      - ceremonies
+      - chiefdom
+      - citation
+      - cuisine
+      - date_entered
+      - denominations
+      - ethnicity_name
+      - food
+      - language
+      - region_in_Uganda
+      - staple_food
+      - universal_rituals
+      - universal_worship
+    GenderEnum:
+      enum:
+      - Male
+      - Female
+      type: string
+      description: |-
+        * `Male` - Male
+        * `Female` - Female
+    LifeFormEnum:
+      enum:
+      - forest
+      - meadow
+      - climber
+      - grassland
+      - herb
+      - shrub
+      - tree
+      type: string
+      description: |-
+        * `forest` - Forest
+        * `meadow` - Meadow
+        * `climber` - Climber
+        * `grassland` - Grassland
+        * `herb` - Herb
+        * `shrub` - Shrub
+        * `tree` - Tree
+    MedicinalPlant:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        health_issues:
+          type: string
+        part_used:
+          type: string
+          maxLength: 100
+        preparation_steps:
+          type: string
+        dosage:
+          type: string
+          maxLength: 100
+        contraindications:
+          type: string
+        shelf_life:
+          type: string
+          maxLength: 100
+        notes:
+          type: string
+        plant:
+          type: integer
+        contributor:
+          type: integer
+          nullable: true
+        names:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+      required:
+      - contraindications
+      - dosage
+      - health_issues
+      - id
+      - names
+      - notes
+      - part_used
+      - plant
+      - preparation_steps
+      - shelf_life
+    PatchedAdministrator:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: uuid
+    PatchedAnimal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        english_name:
+          type: string
+          maxLength: 250
+        scientific_name:
+          type: string
+          maxLength: 250
+        description:
+          type: string
+          maxLength: 250
+        areas_in_Uganda:
+          type: string
+          maxLength: 250
+        known_values:
+          type: string
+          maxLength: 250
+        value_details:
+          type: string
+          maxLength: 250
+        unique_habitat:
+          type: string
+          maxLength: 250
+        threats:
+          type: string
+          maxLength: 250
+        notes:
+          type: string
+          maxLength: 250
+        image:
+          type: string
+          format: uri
+          nullable: true
+        video:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        contributor_name:
+          type: integer
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        local_names:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnimalLocalName'
+          readOnly: true
+        animal_classifications:
+          allOf:
+          - $ref: '#/components/schemas/AnimalClassification'
+          readOnly: true
+    PatchedAnimalClassification:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        kingdom_name:
+          type: string
+          maxLength: 250
+        species:
+          type: string
+          maxLength: 250
+        number_of_species:
+          type: integer
+          nullable: true
+        animal_class:
+          type: string
+          maxLength: 250
+        order:
+          type: string
+          maxLength: 250
+    PatchedAnimalLocalName:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        animal_name:
+          type: string
+          maxLength: 250
+        language:
+          type: string
+          maxLength: 250
+        animal:
+          type: integer
+    PatchedClan:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        clan_name:
+          type: string
+          maxLength: 250
+        clan_seat:
+          type: string
+          maxLength: 250
+        totem:
+          type: string
+          maxLength: 250
+        secondary_totem:
+          type: string
+          maxLength: 250
+        clan_history:
+          type: string
+          maxLength: 250
+        clan_leader_title:
+          type: string
+          maxLength: 250
+        clan_leader_name:
+          type: string
+          maxLength: 250
+        cultural_sites:
+          type: string
+          maxLength: 250
+        male_names:
+          type: string
+          maxLength: 250
+        female_names:
+          type: string
+          maxLength: 250
+        reserved_male_names:
+          type: string
+          maxLength: 250
+        reserved_female_names:
+          type: string
+          maxLength: 250
+        taboos:
+          type: string
+          maxLength: 250
+        lead_god:
+          type: string
+          maxLength: 250
+        other_gods:
+          type: string
+          maxLength: 250
+        images:
+          type: string
+          format: uri
+          nullable: true
+        videos:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        contributor_name:
+          type: integer
+          nullable: true
+    PatchedContributor:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user:
+          type: string
+          format: uuid
+    PatchedCulturalIdentity:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        notes:
+          type: string
+          maxLength: 250
+        images:
+          type: string
+          format: uri
+          nullable: true
+        videos:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        ethnic_group:
+          type: integer
+          nullable: true
+        contributor_name:
+          type: integer
+          nullable: true
+    PatchedCulturalKingdom:
+      type: object
+      properties:
+        kingdom_name:
+          type: string
+          maxLength: 250
+        title_of_leader:
+          type: string
+          maxLength: 250
+        current_king:
+          type: string
+          maxLength: 250
+        current_chief_name:
+          type: string
+          maxLength: 250
+        images:
+          type: string
+          format: uri
+          nullable: true
+        videos:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        number_of_clans:
+          type: integer
+          nullable: true
+        clan_name:
+          type: integer
+          nullable: true
+    PatchedEthnicGroup:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ethnic_group_name:
+          type: string
+          maxLength: 250
+        region_in_Uganda:
+          type: string
+          maxLength: 250
+        number_of_ethnicities:
+          type: integer
+          nullable: true
+        number_of_languages:
+          type: integer
+          nullable: true
+        number_of_kingdoms:
+          type: integer
+          nullable: true
+        ethnicity_name:
+          type: string
+          nullable: true
+    PatchedEthnicity:
+      type: object
+      properties:
+        ethnicity_name:
+          type: string
+          maxLength: 250
+        region_in_Uganda:
+          type: string
+          maxLength: 250
+        language:
+          type: string
+          maxLength: 250
+        food:
+          type: string
+          maxLength: 250
+        staple_food:
+          type: string
+          maxLength: 250
+        cuisine:
+          type: string
+          maxLength: 250
+        cashcrop:
+          type: string
+          maxLength: 250
+        universal_worship:
+          type: string
+          maxLength: 250
+        denominations:
+          type: string
+          maxLength: 250
+        universal_rituals:
+          type: string
+          maxLength: 250
+        ceremonies:
+          type: string
+          maxLength: 250
+        chiefdom:
+          type: string
+          maxLength: 250
+        image:
+          type: string
+          format: uri
+          nullable: true
+        video:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        citation:
+          type: string
+          maxLength: 250
+        date_entered:
+          type: string
+          format: date-time
+          readOnly: true
+        kingdom:
+          type: string
+          nullable: true
+        contributor_name:
+          type: integer
+          nullable: true
+    PatchedMedicinalPlant:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        health_issues:
+          type: string
+        part_used:
+          type: string
+          maxLength: 100
+        preparation_steps:
+          type: string
+        dosage:
+          type: string
+          maxLength: 100
+        contraindications:
+          type: string
+        shelf_life:
+          type: string
+          maxLength: 100
+        notes:
+          type: string
+        plant:
+          type: integer
+        contributor:
+          type: integer
+          nullable: true
+        names:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+    PatchedPlant:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        botanical_name:
+          type: string
+          maxLength: 100
+        region_in_Uganda:
+          type: string
+          maxLength: 100
+        habitat:
+          type: string
+          maxLength: 100
+        life_form:
+          $ref: '#/components/schemas/LifeFormEnum'
+        social_value:
+          type: string
+        economical_value:
+          type: string
+        cultural_value:
+          type: string
+        other_value:
+          type: string
+        image:
+          type: string
+          format: uri
+        video:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        notes:
+          type: string
+        citation:
+          type: string
+          maxLength: 255
+        contributor:
+          type: integer
+          nullable: true
+        names:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+    PatchedUser:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        password:
+          type: string
+          maxLength: 128
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
+        username:
+          type: string
+          nullable: true
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        gender:
+          oneOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        is_verified:
+          type: boolean
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        is_admin:
+          type: boolean
+          title: Medihub system Administrator status
+          description: Designates whether this user should be treated as a Medihub
+            system Administrator.
+        is_contributor:
+          type: boolean
+          title: Contributor status
+          description: Designates whether this user should be treated as a Contributor
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        groups:
+          type: array
+          items:
+            type: integer
+        user_permissions:
+          type: array
+          items:
+            type: integer
+    Plant:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        botanical_name:
+          type: string
+          maxLength: 100
+        region_in_Uganda:
+          type: string
+          maxLength: 100
+        habitat:
+          type: string
+          maxLength: 100
+        life_form:
+          $ref: '#/components/schemas/LifeFormEnum'
+        social_value:
+          type: string
+        economical_value:
+          type: string
+        cultural_value:
+          type: string
+        other_value:
+          type: string
+        image:
+          type: string
+          format: uri
+        video:
+          type: string
+          format: uri
+          nullable: true
+        audio:
+          type: string
+          format: uri
+          nullable: true
+        notes:
+          type: string
+        citation:
+          type: string
+          maxLength: 255
+        contributor:
+          type: integer
+          nullable: true
+        names:
+          type: array
+          items:
+            type: integer
+          readOnly: true
+      required:
+      - botanical_name
+      - citation
+      - cultural_value
+      - economical_value
+      - habitat
+      - id
+      - image
+      - life_form
+      - names
+      - notes
+      - other_value
+      - region_in_Uganda
+      - social_value
+    User:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        password:
+          type: string
+          maxLength: 128
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
+        username:
+          type: string
+          nullable: true
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        gender:
+          oneOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        is_verified:
+          type: boolean
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        is_admin:
+          type: boolean
+          title: Medihub system Administrator status
+          description: Designates whether this user should be treated as a Medihub
+            system Administrator.
+        is_contributor:
+          type: boolean
+          title: Contributor status
+          description: Designates whether this user should be treated as a Contributor
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+        date_joined:
+          type: string
+          format: date-time
+        groups:
+          type: array
+          items:
+            type: integer
+        user_permissions:
+          type: array
+          items:
+            type: integer
+      required:
+      - password
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
