@@ -12,7 +12,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+#from dj_rest_authallauth import *
 #import dj_database_url
+
+import dotenv
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +41,6 @@ ALLOWED_HOSTS = ["*"]
 # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,8 +59,18 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'corsheaders',
     'bootstrap4',
-    
-    
+    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    # add this
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'django.contrib.sites',
+    #for registration
+    #'auth_app.apps.AuthAppConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    #'allauth.socialaccount.providers.google',
 
 ]
 
@@ -67,15 +84,36 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    "django.middleware.csrf.CsrfViewMiddleware",
+    'django.middleware.csrf.CsrfViewMiddleware',
+    #add the middleware for allauth accounts
+    'allauth.account.middleware.AccountMiddleware',
+    #
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+
 ]
 
 CORS_ALLOWED_ORIGINS = [
     # Add the allowed origins (e.g., frontend URLs)
-    'https://fgf-project-frontend.vercel.app', 'http://localhost:5173',
+    'https://fgf-project-frontend.vercel.app', 'http://localhost:5173', 'http://localhost:8000',
 ]
 
 ROOT_URLCONF = "fgf.urls"
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 TEMPLATES = [
     {
@@ -97,10 +135,58 @@ WSGI_APPLICATION = "fgf.wsgi.application"
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
+    )
 }
 
+#Domain names to be used
+SITE_ID = 1
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'fgf-app-auth' #set name of cookie
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pktpaulie@gmail.com'
+EMAIL_USE_SSL = False
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+#use email for authentication instead of username
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+#allow the app to verify the user when they open the link received by email
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = True
+
+
+"""
+FIREBASE_ACCOUNT_TYPE = os.environ.get('FIREBASE_ACCOUNT_TYPE')
+FIREBASE_APIKEY = os.environ.get('FIREBASE_APIKEY')
+FIREBASE_AUTH_DOMAIN = os.environ.get('FIREBASE_AUTH_DOMAIN')
+FIREBASE_PROJECTID = os.environ.get('FIREBASE_PROJECTID')
+FIREBASE_STORAGE_BUCKET = os.environ.get('FIREBASE_STORAGE_BUCKET')
+FIREBASE_MESSAGING_SENDERID = os.environ.get('FIREBASE_MESSAGING_SENDERID')
+FIREBASE_APPID = os.environ.get('FIREBASE_APPID')
+FIREBASE_MEASUREMENTID = os.environ.get('FIREBASE_MEASUREMENTID')
+"""
+
+
+"""config = {
+    'apiKey': os.environ.get('FIREBASE_APIKEY'),
+    'authDomain': os.environ.get('FIREBASE_AUTH_DOMAIN'),
+    'projectId': os.environ.get('FIREBASE_PROJECTID'),
+    'storageBucket': os.environ.get('FIREBASE_STORAGE_BUCKET'),
+    'messagingSenderId': os.environ.get('FIREBASE_MESSAGING_SENDERID'),
+    'appId': os.environ.get('FIREBASE_APPID'),
+    'measurementId': os.environ.get('FIREBASE_MEASUREMENTID')
+}"""
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -165,5 +251,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # FOR deployment
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+# redirect the user to login-url after verification 
+LOGIN_URL = 'http://localhost:8000/auth-app/login'
+#LOGIN_REDIRECT_URL = 'http://localhost:8000/auth-app/login'
+LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

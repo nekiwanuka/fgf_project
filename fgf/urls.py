@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework.schemas import get_schema_view
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from dj_rest_auth.views  import PasswordResetView, PasswordResetConfirmView
+from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,6 +34,10 @@ urlpatterns = [
     path('', include('animals_app.urls'), name='animals'), 
     path('', include('cultures_app.urls'), name='cultures'),
     path('', include('plants_app.urls'), name='plants'), 
-    path('', include('auth_app.urls')), 
+    path('', include('auth_app.urls')),
+
+    #urls for password reset
+    path('password-reset/', PasswordResetView.as_view()),
+    path('password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'), 
     
     ]
