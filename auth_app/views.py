@@ -2,7 +2,12 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from .models import User, Administrator, Contributor
 from .serializers import UserSerializer, AdministratorSerializer, ContributorSerializer
 
-#from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 #from django.shortcuts import render
 #from pyrebase import pyrebase 
@@ -13,6 +18,27 @@ from .serializers import UserSerializer, AdministratorSerializer, ContributorSer
 #from rest_framework.views import APIView
 #from rest_framework.response import Response
 #from rest_framework import status
+
+@api_view(['POST'])
+def login(request):
+    return Response({})
+
+@api_view(['POST'])
+def signup(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        user = User.objects.get(username=request.data['username'])
+        #hash users password
+        user.set_password(request.data['password'])
+        user.save()
+        token = Token.objects.create(user=user)
+        return Response({"token": token.key, "user": serializer.data})
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def test_token(request):
+    return Response({})
 
 class UserListCreateView(ListCreateAPIView):
     queryset = User.objects.all()
@@ -38,11 +64,11 @@ class ContributorDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Contributor.objects.all()
     serializer_class = ContributorSerializer
 
+
+#class MyTokenObtainPairView(TokenObtainPairView):
+#    pass
+
 """ 
-class MyTokenObtainPairView(TokenObtainPairView):
-    pass
-
-
 class UserAPIView(APIView):
     permission_classes = [ IsAuthenticated ]
     #Here just add FirebaseAuthentication class in authentication_classes

@@ -33,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-x51dn5%sqj$rc-#i+-5ivq=#b2u3t7663)0)%xds22fu@c9l$1"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = ["*"]
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
     # add this
+    'rest_authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django.contrib.sites',
@@ -84,21 +85,21 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     #add the middleware for allauth accounts
     'allauth.account.middleware.AccountMiddleware',
     #
 ]
 
-AUTHENTICATION_BACKENDS = [
+""" AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
+    'allauth.account.auth_backends.AuthenticationBackend',
 
-]
+] """
 
 CORS_ALLOWED_ORIGINS = [
     # Add the allowed origins (e.g., frontend URLs)
-    'https://fgf-project-frontend.vercel.app', 'http://localhost:5173', 'http://localhost:8000',
+    'https://fgf-project-frontend.vercel.app', 'http://localhost:5173', 
+    'http://localhost:8000',
 ]
 
 ROOT_URLCONF = "fgf.urls"
@@ -140,8 +141,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
+        'rest_authtoken.auth.AuthTokenAuthentication',
     )
 }
+
+#AUTH_USER_MODEL = 'auth_app.User'
 
 #Domain names to be used
 SITE_ID = 1
@@ -154,7 +158,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pktpaulie@gmail.com'
 EMAIL_USE_SSL = False
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = 'jjnz bxij sjpw hfzl'
 
 #use email for authentication instead of username
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
@@ -164,6 +169,11 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 #allow the app to verify the user when they open the link received by email
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_LOGOUT_ON_GET = True
+
+
+
+#registration
+REGISTRATION_ENABLED = True
 
 
 """
@@ -253,7 +263,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 # redirect the user to login-url after verification 
-LOGIN_URL = 'http://localhost:8000/auth-app/login'
+LOGIN_URL = 'http://localhost:8000/login/'
 #LOGIN_REDIRECT_URL = 'http://localhost:8000/auth-app/login'
 LOGOUT_REDIRECT_URL = '/'
 

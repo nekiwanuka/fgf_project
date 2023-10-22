@@ -5,7 +5,8 @@ from .views import UserListCreateView, UserDetailView, \
     AdministratorListCreateView, AdministratorDetailView, \
     ContributorListCreateView, ContributorDetailView
 
-#from .views import MyTokenObtainPairView
+from rest_framework_simplejwt.views import TokenRefreshView
+from .views import TokenObtainPairView  # Import your custom token view
 
 #for login, logout and registration
 from dj_rest_auth.registration.views import RegisterView, VerifyEmailView
@@ -23,8 +24,15 @@ urlpatterns = [
     path('contributors/<uuid:pk>/', ContributorDetailView.as_view(), name='contributor-detail'),
     
     #path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
     path('register/', RegisterView.as_view()),
-    path('login/', LoginView.as_view()),
+    #path('login/', LoginView.as_view()),
+    re_path('login', views.login),
+    re_path('signup', views.signup),
+    re_path('test_token', views.test_token),
+
     path('logout/', LogoutView.as_view()),
 
     path('verify-email/', VerifyEmailView.as_view(), name='rest_verify_email'),

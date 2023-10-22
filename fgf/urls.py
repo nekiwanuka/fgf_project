@@ -29,6 +29,8 @@ urlpatterns = [
     path('api/plants/', include('plants_app.urls')),
     path('api/animals/', include('animals_app.urls')),
     path('api/cultures/', include('cultures_app.urls')),
+
+    path('auth_app/', include('rest_authtoken.urls')),
     
     
     path('', include('animals_app.urls'), name='animals'), 
