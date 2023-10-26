@@ -1,18 +1,25 @@
-from rest_framework import serializers
-from .models import User, Administrator, Contributor
+import auth_app._serializers.user_serializers as user_serializers
+import auth_app._serializers.account_serializers as account_serializers
+import auth_app._serializers.administrator_serializers as administrator_serializers
+import auth_app._serializers.contributor_serializers as contributor_serializers
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        #fields = '__all__'
-        fields = ['url', 'username', 'email', 'groups']
 
-class AdministratorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Administrator
-        fields = '__all__'
+# User Serializers
+RegisterUserSerializer = user_serializers.RegisterUserSerializer
+#UserProfileSerializer = user_serializers.UserProfileSerializer
+UpdateUserProfileSerializer = user_serializers.UpdateUserProfileSerializer
 
-class ContributorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Contributor
-        fields = '__all__'
+# Account Serializers
+UserLoginSerializer = account_serializers.UserLoginSerializer
+SendVerificationLinkSerializer = account_serializers.SendVerificationLinkSerializer
+PasswordResetSerializer = account_serializers.PasswordResetSerializer
+PasswordResetConfirmSerializer = account_serializers.PasswordResetConfirmSerializer
+
+# Administrator Serializers
+AdministratorSerializer = administrator_serializers.AdministratorSerializer
+AdministratorLoginSerializer = administrator_serializers.AdministratorLoginSerializer
+
+# Contributor Serializers
+CreateContributorSerializer = contributor_serializers.CreateContributorSerializer
+ContributorSerializer = contributor_serializers.ContributorSerializer
+ContributorLoginSerializer = contributor_serializers.ContributorLoginSerializer

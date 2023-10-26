@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
         user.set_password(password)
 
         user.save()
-        #return self.creat_user(email, password, **extra_fields)
+        return user
 
     def create_user(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
@@ -52,18 +52,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     An abstract base class implementing a fully featured User model with
     admin-compliant permissions.
-
-    Username and password are required. Other fields are optional.
+    Email and password are required. Other fields are optional.
     """
-
     gender_choices = [
         ('Male', 'Male'),
         ('Female', 'Female')
     ]
-
     Id = models.UUIDField(primary_key=True, max_length=50,
                           default=uuid.UUID('a365c526-2028-4985-848c-312a82699c7b'))
-
     username_validator = UnicodeUsernameValidator()
     username = models.CharField(
         _('username'),
@@ -91,10 +87,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     is_admin = models.BooleanField(
-        _('Medihub system Administrator status'),
+        _('FGF system Administrator status'),
         default=False,
         help_text=_(
-            'Designates whether this user should be treated as a Medihub system Administrator.')
+            'Designates whether this user should be treated as a FGF system Administrator.')
     )
 
     is_contributor = models.BooleanField(
@@ -117,7 +113,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     EMAIL_FIELD = 'email'
-    #USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     class Meta:
@@ -206,41 +202,41 @@ class Contributor(models.Model):
         return f'{self.user}'
 
 
-# class PasswordResetInfo(models.Model):
-#     """
-#     The PasswordResetInfo Model:
-#         Lays specifications of how the PasswordResetInfo Entity / Table Should be Created in the Database.
-#     """
+class PasswordResetInfo(models.Model):
+    """
+    The PasswordResetInfo Model:
+        Lays specifications of how the PasswordResetInfo Entity / Table Should be Created in the Database.
+    """
 
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     reset_code = models.CharField(max_length=6, default='000000', unique=True)
-#     created_at = models.DateTimeField(default=timezone.now)    
-#     expires_at = models.DateTimeField(
-#         default=(timezone.now() + timezone.timedelta(hours=24)))
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    reset_code = models.CharField(max_length=6, default='000000', unique=True)
+    created_at = models.DateTimeField(default=timezone.now)    
+    expires_at = models.DateTimeField(
+        default=(timezone.now() + timezone.timedelta(hours=24)))
 
-#     def __str__(self):
-#         _str = ''
-#         if(self.user.first_name or self.user.last_name):
-#             if self.user.first_name:
-#                 _str += self.user.first_name
-#             if self.user.last_name:
-#                 _str += ' ' + self.user.last_name
-#         if self.user.email:
-#             _str += ' ' + self.user.email + ''
-#         if self.reset_code:
-#             _str += ' (' + str(self.reset_code) + ')'
-#         return _str
+    def __str__(self):
+        _str = ''
+        if(self.user.first_name or self.user.last_name):
+            if self.user.first_name:
+                _str += self.user.first_name
+            if self.user.last_name:
+                _str += ' ' + self.user.last_name
+        if self.user.email:
+            _str += ' ' + self.user.email + ''
+        if self.reset_code:
+            _str += ' (' + str(self.reset_code) + ')'
+        return _str
 
-#     def save(self, force_insert=False, force_update=False, using=None,
-#              update_fields=None):
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
 
-#         if self._state.adding:
-#             CodeGenerator = UniqueMonotonicCodeGenerator()
-#             self.reset_code = CodeGenerator.generate()
-#             self.expires_at = (timezone.now() + timezone.timedelta(hours=24))
-#         super(PasswordResetInfo, self).save()
+        if self._state.adding:
+            CodeGenerator = UniqueMonotonicCodeGenerator()
+            self.reset_code = CodeGenerator.generate()
+            self.expires_at = (timezone.now() + timezone.timedelta(hours=24))
+        super(PasswordResetInfo, self).save()
 
-#     class Meta:
-#         verbose_name_plural = 'Password Reset Info'
-#         ordering = ['user']
-#     # End class Meta
+    class Meta:
+        verbose_name_plural = 'Password Reset Info'
+        ordering = ['user']
+    # End class Meta

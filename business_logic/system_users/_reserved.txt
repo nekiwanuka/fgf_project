@@ -1,0 +1,54 @@
+"""
+User Stories
+--------------------------
+- As a vendor, I want to:
+
+    - Register self as Vendor
+    - View own Profile
+    - Update own Profile
+    - Freeze / Deactivate Account
+    - Delete own Profile
+
+    - Add / Register / Profile an Organization on the platform.
+    - View List of Registered Organizations on the Platform.
+    - View Details of a specific Organization on the system.
+        - Vendors
+        - Branches
+        - Stock
+        - Products
+        - OSP Units
+        - OSPU_Details
+    - Update and or Patch Organization Details / Information on the system, only if isAdmin of the Organization.
+    - Delete Organization from stock and hence from System, only if isAdmin of the Organization.
+
+    - Register / Profile a Vendor under Organization on the platform, only if isAdmin of the Organization.
+    - View List of Registered Vendors under Organizations on the Platform.
+    - View Details of a specific Vendor under Organization on the system.
+    - Update and or Patch Vendor under Organization Details / Information on the system, only if isAdmin of the Organization.
+    - Delete Vendor under Organization from stock and hence from System, only if isAdmin of the Organization.
+
+    - Add / Register / Profile a product on the platform.
+    - View List of Registered Products on the Platform.
+    - View Details of a specific Product on the system.
+        - Products
+        - OSP Units
+        - OSPU_Details
+    - Update and or Patch Product Details / Information on the system.
+    - Delete Product from stock and hence from System.
+
+    - Set price for a product in stock. ==> Product Gross Selling Price (PGSP).
+        Product Gross Selling Price (PGSP) = Product Net Selling Price (PNSP) + Markup
+    - Determine the Product Net Selling Price (PNSP) for a product in stock.
+        Product Net Selling Price (PNSP) = Product Gross Selling Price (PGSP) - Markup
+    - View order(s) palced against a product or list of products in stock.
+    - View sales made for a product or list of products in stock.
+        - Sales with in a space of less than 2 weeks (14 Days)
+    - Bill for sales made:
+        Initiate Transaction / Payment (Medihub to Vendor) for a Product or Products sold (Within a space of not less than two week / 14 Days)
+    - View Transactions Pending Approval:
+         Pending Transactions / Payments (Medihub to Vendor) for a Product or Products sold.
+    - View Transactions Apprived but Pending Payments:
+         Pending Transactions / Payments (Medihub to Vendor) for a Product or Products sold.
+    - View Paid off Transactions:
+"""
+

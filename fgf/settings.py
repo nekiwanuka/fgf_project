@@ -54,9 +54,12 @@ INSTALLED_APPS = [
     "plants_app",
     "animals_app",
     "cultures_app",
+    "business_logic",
+    "core",
     "rest_framework",
     "django_filters",
     'drf_spectacular',
+    'drf_yasg',
     'corsheaders',
     'bootstrap4',
     'rest_framework_simplejwt',
@@ -64,6 +67,7 @@ INSTALLED_APPS = [
     # add this
     'rest_authtoken',
     'dj_rest_auth',
+    'rest_auth',
     'dj_rest_auth.registration',
     'django.contrib.sites',
     #for registration
@@ -140,7 +144,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
+        #'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
         'rest_authtoken.auth.AuthTokenAuthentication',
     )
 }
@@ -150,7 +154,7 @@ REST_FRAMEWORK = {
 #Domain names to be used
 SITE_ID = 1
 REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'fgf-app-auth' #set name of cookie
+#JWT_AUTH_COOKIE = 'fgf-app-auth' #set name of cookie
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

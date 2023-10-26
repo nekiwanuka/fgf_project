@@ -5,13 +5,13 @@ Content-Type: application/json
 
 ###
 
-POST http://127.0.0.1:8000/signup
+POST http://127.0.0.1:8000/signup/
 Content-Type: application/json
 
 { 
-"username": "bonlive", 
-"password":"12b0N1iv", 
-"email":"bon_olives@yahoo.com"
+"username": "paulaK", 
+"password":"myPk$tar3", 
+"email":"korup01@pfw.edu"
 }
 
 ###
