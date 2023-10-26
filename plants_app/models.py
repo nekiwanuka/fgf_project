@@ -25,6 +25,9 @@ class Plant(models.Model):
     habitat = models.CharField(max_length=100)
     life_form = models.CharField(max_length=100, choices=LIFE_FORM_CHOICES)
     
+    #description is missing
+
+     
     # Values and properties
     social_value = models.TextField()
     economical_value = models.TextField()
