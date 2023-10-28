@@ -5,6 +5,8 @@ from django.conf.urls import include
 
 
 urlpatterns = [
+    #path("account/signup/",
+    #    views.CreateUserViewSet.as_view({'post': 'create'})),
     # path('', views.ViewUsersListViewSet.as_view(
     #     {'get': 'list'}), name="view_user"),
     # path(r'<str:Id>/', views.RetrieveUserViewSet.as_view(
