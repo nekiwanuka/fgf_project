@@ -3,6 +3,8 @@ from django.urls import path
 
 
 urlpatterns = [
+    #path("account/signup/",
+    #     views.CreateAdministratorViewSet.as_view({'post': 'create'})),
     path('', views.ViewAdministratorsListViewSet.as_view(
         {'get': 'list'}), name="view_administrator"),
     path(r'<str:id>/', views.RetrieveAdministratorViewSet.as_view(
@@ -11,6 +13,6 @@ urlpatterns = [
     #      views.UpdateAdministratorViewSet.as_view({'put': 'update'})),
     # path(r'<str:id>/delete/',
     #      views.DeleteAdministratorViewSet.as_view({'delete': 'destroy'})),
-    path(r'account/login/',
+    path('account/login/',
          views.AdministratorLoginView.as_view()),
 ]
