@@ -13,7 +13,6 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path, re_path
 from ._urls import administrator_urls as administrator_urls
 from ._urls import contributor_urls as contributor_urls
-from ._urls import user_urls as user_urls
 
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView)
@@ -21,19 +20,19 @@ from rest_auth.views import (
     LogoutView, PasswordChangeView,
 )
 
+
 from auth_app.views import (
     # RegisterUserView, 
     VerifyEmailView,
     SendVerificationLinkView, 
-    
-    UserLoginView,
+    # UserLoginView,
     PasswordResetView, PasswordResetConfirmView
 )
 
 # aggregate auth urls
 administrator_urls
 contributor_urls
-user_urls
+
 
 urlpatterns = [
     # jwt : Get Access token and its coresponding Refresh Token
@@ -49,14 +48,14 @@ urlpatterns = [
 
     # Verifies email for successfull Registration
     path(
-        'verify-email',
+        r'verify-email',
         VerifyEmailView.as_view(),
         name='verify-email'
     ),
 
     # Resends email verification link for successfull Registration
     path(
-        'verification-link/',
+        r'verification-link/',
         SendVerificationLinkView.as_view(),
         name='email-verification-link'
     ),
@@ -67,16 +66,15 @@ urlpatterns = [
     path(r'password/reset/confirm/', PasswordResetConfirmView.as_view(),
          name='rest_password_reset_confirm'),
 
-    # Login 
-    path(
-        "login/", UserLoginView.as_view(), name="login"
-        # r'login/',
-        # UserLoginView.as_view(),
-        # name='login'
-    ),
+    # Login to the Medihub Platform
+    # path(
+    #     r'login/',
+    #     UserLoginView.as_view(),
+    #     name='login'
+    # ),
 
     # URLs that require a user to be logged in with a valid session / token.
-    path('logout/', LogoutView.as_view(), name='rest_logout'),
+    path(r'logout/', LogoutView.as_view(), name='rest_logout'),
     path(r'password/change/', PasswordChangeView.as_view(),
          name='rest_password_change'),
 ]

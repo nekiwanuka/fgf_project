@@ -69,9 +69,9 @@ class User(AbstractUser):
         self.set_accounts_controller(UserAccountsController())
         return self.get_accounts_controller().register_vendor(request)
 
-    def register_contributor(self, user):
+    def register_client(self, request):
         self.set_accounts_controller(UserAccountsController())
-        return self.get_accounts_controller().register_contributor(user)
+        return self.get_accounts_controller().register_client(request)
 
     def register_courier(self, request):
         self.set_accounts_controller(UserAccountsController())
