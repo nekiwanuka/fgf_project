@@ -27,6 +27,12 @@ class PlantListView(generics.ListCreateAPIView):
     filterset_class = PlantFilter
     search_fields = ['region_in_Uganda', 'habitat']
 
+    #PK added to enable get by ID on front end
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = PlantSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class PlantDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Plant.objects.all()
     serializer_class = PlantSerializer
