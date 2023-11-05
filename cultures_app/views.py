@@ -75,7 +75,7 @@ class CulturalIdentityListCreateView(generics.ListCreateAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK) """
 
     
-    
+#Not being used  
 class CulturalIdentityDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = CulturalIdentity.objects.all()
     #permission_classes = [permissions.IsAuthenticatedOrReadOnly]
