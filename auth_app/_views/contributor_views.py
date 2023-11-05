@@ -3,6 +3,7 @@ from auth_app.serializers import (CreateContributorSerializer, ContributorSerial
 from core.mixins import view_mixins
 from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.generics import CreateAPIView
 
 # Create your views here.
 class CreateContributorViewSet(view_mixins.BaseCreateAPIView):
@@ -12,6 +13,8 @@ class CreateContributorViewSet(view_mixins.BaseCreateAPIView):
     queryset = Contributor.objects.all()
     serializer_class = CreateContributorSerializer
     lookup_field = 'id'
+
+
 
     # def post(self, request):
     #     try:
@@ -76,4 +79,3 @@ class ContributorLoginView(generics.GenericAPIView):
             data = serializer.validated_data
             # print(data)
             return Response(data=data, status=status.HTTP_200_OK)
-

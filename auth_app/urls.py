@@ -48,14 +48,14 @@ urlpatterns = [
 
     # Verifies email for successfull Registration
     path(
-        r'verify-email',
+        'verify-email',
         VerifyEmailView.as_view(),
         name='verify-email'
     ),
 
     # Resends email verification link for successfull Registration
     path(
-        r'verification-link/',
+        'verification-link/',
         SendVerificationLinkView.as_view(),
         name='email-verification-link'
     ),
@@ -66,7 +66,7 @@ urlpatterns = [
     path(r'password/reset/confirm/', PasswordResetConfirmView.as_view(),
          name='rest_password_reset_confirm'),
 
-    # Login to the Medihub Platform
+   
     # path(
     #     r'login/',
     #     UserLoginView.as_view(),
