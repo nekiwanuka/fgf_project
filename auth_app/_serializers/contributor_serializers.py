@@ -28,8 +28,8 @@ class CreateContributorSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password','data']
-
+        fields = ['email', 'password']
+        #fields = ['email', 'password','data']
 
     def create(self, validated_data):
         _request = self.context['request']

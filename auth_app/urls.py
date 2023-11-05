@@ -77,6 +77,8 @@ urlpatterns = [
     path(r'logout/', LogoutView.as_view(), name='rest_logout'),
     path(r'password/change/', PasswordChangeView.as_view(),
          name='rest_password_change'),
+
+    
 ]
 
 # urlpatterns = [
@@ -91,11 +93,6 @@ urlpatterns = [
 #     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
 #     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-#     path('register/', RegisterView.as_view()),
-#     #path('login/', LoginView.as_view()),
-#     re_path('login', views.login),
-#     #re_path('signup', views.signup),
-#     re_path('test_token', views.test_token),
 
 #     path('logout/', LogoutView.as_view()),
 

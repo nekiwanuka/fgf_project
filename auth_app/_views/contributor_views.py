@@ -1,9 +1,11 @@
-from auth_app.models import Contributor
+from auth_app.models import Contributor, User
+from business_logic.system_users._user import User as UserFacade
 from auth_app.serializers import (CreateContributorSerializer, ContributorSerializer, ContributorLoginSerializer)
 from core.mixins import view_mixins
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
+from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 class CreateContributorViewSet(view_mixins.BaseCreateAPIView):
@@ -14,7 +16,19 @@ class CreateContributorViewSet(view_mixins.BaseCreateAPIView):
     serializer_class = CreateContributorSerializer
     lookup_field = 'id'
 
-
+    @require_http_methods(["GET", "POST"])
+    def create(self, validated_data):
+        # Create and return a new user instance using the validated data
+        user = User.objects.create(
+            email=validated_data['email']
+        )
+        user.set_password(validated_data['password'])  # Hash and set the password
+        #user.save()
+       
+        _request = self.context['request']
+        request = {'request':_request, 'validated_data':validated_data}
+        #return user
+        return UserFacade().register_contributor(request)
 
     # def post(self, request):
     #     try:

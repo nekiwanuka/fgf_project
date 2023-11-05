@@ -3,7 +3,7 @@ from django.urls import path
 
 
 urlpatterns = [
-    path("account/signup/",
+    path('account/signup/',
          views.CreateContributorViewSet.as_view({'post': 'create'}), name="signup"),
      #path("account/signup/",
      #    views.CreateContributorViewSet.as_view({'post': 'create'})),    
