@@ -2,6 +2,8 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from cultures_app.models import *
 from .serializers import *
+from rest_framework import status
+from rest_framework.response import Response
 # from django.contrib.auth.models import User
 # from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate
@@ -60,7 +62,7 @@ class EthnicityDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EthnicitySerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
 
-
+#Not being used
 class CulturalIdentityListCreateView(generics.ListCreateAPIView):
     queryset = CulturalIdentity.objects.all()
     #permission_classes = [permissions.IsAuthenticatedOrReadOnly] ---PK comment
@@ -89,7 +91,11 @@ class EthnicGroupListView(generics.ListCreateAPIView):
     serializer_class = EthnicGroupSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["ethnic_group"]
-
+    #PK added to enable get by ID on front end
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = EthnicGroup(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class EthnicGroupDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = EthnicGroup.objects.all()

@@ -80,17 +80,20 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    'django.middleware.common.CommonMiddleware',
+
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     #add the middleware for allauth accounts
-    'allauth.account.middleware.AccountMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
     #
 ]
 
@@ -107,6 +110,12 @@ CORS_ALLOWED_ORIGINS = [
     'https://fgf-project-frontend.vercel.app', 'http://localhost:5173', 
     'http://localhost:8000',
 ]
+
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',
+]
+
 
 ROOT_URLCONF = "fgf.urls"
 
@@ -143,12 +152,20 @@ WSGI_APPLICATION = "fgf.wsgi.application"
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
         'rest_authtoken.auth.AuthTokenAuthentication',
-    )
+    ),
+
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
 }
 
 #AUTH_USER_MODEL = 'auth_app.User'
