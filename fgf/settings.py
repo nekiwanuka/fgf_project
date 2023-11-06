@@ -100,6 +100,8 @@ MIDDLEWARE = [
 
 ] """
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOWED_ORIGINS = [
     # Add the allowed origins (e.g., frontend URLs)
     'https://fgf-project-frontend.vercel.app', 'http://localhost:5173', 
@@ -144,7 +146,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        #'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
         'rest_authtoken.auth.AuthTokenAuthentication',
     )
 }

@@ -69,9 +69,9 @@ class User(AbstractUser):
         self.set_accounts_controller(UserAccountsController())
         return self.get_accounts_controller().register_vendor(request)
 
-    def register_client(self, request):
+    def register_contributor(self, user):
         self.set_accounts_controller(UserAccountsController())
-        return self.get_accounts_controller().register_client(request)
+        return self.get_accounts_controller().register_contributor(user)
 
     def register_courier(self, request):
         self.set_accounts_controller(UserAccountsController())
@@ -80,4 +80,3 @@ class User(AbstractUser):
     def login(self, login_data):
         self.set_auth_controller(AuthController())
         return self.get_auth_controller().in_logger.login(login_data)
-

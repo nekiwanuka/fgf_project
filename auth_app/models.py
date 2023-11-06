@@ -171,6 +171,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     #     ordering = ['-joined_at']
     # End class Meta
 
+    # PK added
+    def is_administrator(self):
+        return self.is_admin
+
+    def is_contributor(self):
+        return self.is_contributor
+
 
 class Administrator(models.Model):
     id = models.UUIDField(primary_key=True, max_length=50,
@@ -182,6 +189,10 @@ class Administrator(models.Model):
         if self._state.adding:
             self.id = uuid.uuid4()
         super(Administrator, self).save()
+
+    #PK added
+    def is_administrator(self):
+        return True
 
     def __str__(self):
         return f'{self.user}'
@@ -198,6 +209,9 @@ class Contributor(models.Model):
             self.id = uuid.uuid4()
         super(Contributor, self).save()
 
+    def is_contributor(self):
+        return True
+    
     def __str__(self):
         return f'{self.user}'
 

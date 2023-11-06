@@ -14,19 +14,19 @@ class AnimalClassification(models.Model):
 class Animal(models.Model):
     english_name = models.CharField(max_length=250)
     scientific_name = models.CharField(max_length=250)
-    description = models.CharField(max_length=250)
+    description = models.TextField(null=True, blank=True)
     areas_in_Uganda = models.CharField(max_length=250)
     animal_classifications = models.ForeignKey(AnimalClassification, on_delete=models.SET_NULL, null=True)
     known_values = models.CharField(max_length=250)
     value_details = models.CharField(max_length=250)
     unique_habitat = models.CharField(max_length=250)
-    threats = models.CharField(max_length=250)
-    notes = models.CharField(max_length=250)
-    image = models.ImageField(null=True, blank=True)
-    video = models.FileField(upload_to='media_files', null=True, blank=True)
-    audio = models.FileField(upload_to='media_files', null=True, blank=True)
+    threats = models.TextField()
+    notes = models.TextField()
+    image = models.ImageField(upload_to='animal_images', null=True, blank=True)
+    video = models.FileField(upload_to='animal_videos', null=True, blank=True)
+    audio = models.FileField(upload_to='animal_audios', null=True, blank=True)
     contributor_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
-    citation = models.CharField(max_length=250)
+    citation = models.TextField()
     date_entered = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -35,7 +35,7 @@ class Animal(models.Model):
 class AnimalLocalName(models.Model):
     local_name = models.CharField(max_length=250)
     language = models.CharField(max_length=250)
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='local_names')
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"{self.local_name} ({self.language}) for {self.animal.english_name} ({self.animal.scientific_name})"
