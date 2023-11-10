@@ -92,13 +92,13 @@ class EthnicGroupListView(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["ethnic_group"]
     #PK added to enable get by ID on front end
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = EthnicGroup(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.get_queryset()
+    #     serializer = EthnicGroup(queryset, many=True)
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
 
 class EthnicGroupDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = EthnicGroup.objects.all()
     #permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = EthnicGroupSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    #filter_backends = [DjangoFilterBackend, filters.SearchFilter]

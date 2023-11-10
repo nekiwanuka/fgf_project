@@ -39,10 +39,10 @@ class AnimalListCreateView(generics.ListCreateAPIView):
     serializer_class = AnimalSerializer
 
     #PK added to enable get by ID on front end
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = AnimalSerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.get_queryset()
+    #     serializer = AnimalSerializer(queryset, many=True)
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
     
 class AnimalDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Animal.objects.all()

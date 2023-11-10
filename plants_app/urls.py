@@ -16,4 +16,5 @@ urlpatterns = [
     path('api/calculate-medicinal-plants-count/', CalculateMedicinalPlantsCount.as_view(), name='calculate-medicinal-plants-count'),
     path('api/calculate-plants-count/', CalculatePlantsCount.as_view(), name='calculate-plants-count'),
     # ... other URL patterns ...
+    path('api/plant_images/', PlantListView.as_view(), name='plant-list'), #create view for images
 ]
