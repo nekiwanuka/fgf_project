@@ -121,6 +121,7 @@ urlpatterns = [
     #path('', include('auth_app.urls'), name='auth'),
     
     #path('auth_app/', include('rest_authtoken.urls')),
+    path('', include('authenticate.urls'), name='authenticate'),
     path('', include('animals_app.urls'), name='animals'), 
     path('', include('cultures_app.urls'), name='cultures'),
     path('', include('plants_app.urls'), name='plants'), 
