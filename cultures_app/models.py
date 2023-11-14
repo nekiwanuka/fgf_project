@@ -43,6 +43,7 @@ class CulturalKingdom(models.Model):
 class Ethnicity(models.Model): 
     ethnicity_name = models.CharField(primary_key=True, max_length=250) 
     region_in_Uganda = models.CharField(max_length=250, null=True, blank=True) 
+    description = models.TextField(null=True, blank=True)
     language = models.CharField(max_length=250, null=True, blank=True)
     food = models.CharField(max_length=250, null=True, blank=True)
     staple_food = models.CharField(max_length=250, null=True, blank=True)

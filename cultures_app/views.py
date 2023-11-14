@@ -70,12 +70,6 @@ class CulturalIdentityListCreateView(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["ethnic_group"]
 
-    """ #PK added to enable get by ID on front end
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = CulturalIdentitySerializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK) """
-
     
 #Not being used  
 class CulturalIdentityDetailView(generics.RetrieveUpdateDestroyAPIView):

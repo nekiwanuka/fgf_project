@@ -16,7 +16,7 @@ import os
 #import dj_database_url
 import datetime
 from datetime import timedelta
-
+from .utils.authentication_extensions import AuthTokenAuthenticationExtension
 
 import dotenv
 import environ
@@ -36,7 +36,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-x51dn5%sqj$rc-#i+-5ivq=#b2u3t7663)0)%xds22fu@c9l$1"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = ["*"]
@@ -53,8 +53,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'drf_yasg',
     "authenticate",
-    "auth_app",
+    #"auth_app",
     "plants_app",
     "animals_app",
     "cultures_app",
@@ -62,8 +63,6 @@ INSTALLED_APPS = [
     "core",
     "rest_framework",
     "django_filters",
-    'drf_spectacular',
-    'drf_yasg',
     'corsheaders',
     'bootstrap4',
     'rest_framework_simplejwt',
@@ -83,23 +82,38 @@ INSTALLED_APPS = [
 
 ]
 
+# MIDDLEWARE = [
+#     'corsheaders.middleware.CorsMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+
+#     "django.middleware.security.SecurityMiddleware",
+#     "django.contrib.sessions.middleware.SessionMiddleware",
+#     "django.contrib.staticfiles.middleware.StaticFilesMiddleware",
+    
+#     "django.middleware.csrf.CsrfViewMiddleware",
+#     "django.contrib.auth.middleware.AuthenticationMiddleware",
+#     "django.contrib.messages.middleware.MessageMiddleware",
+#     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    
+#     "whitenoise.middleware.WhiteNoiseMiddleware",
+#     #add the middleware for allauth accounts
+#     "allauth.account.middleware.AccountMiddleware",
+#     #
+# ]
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
-
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    #add the middleware for allauth accounts
     "allauth.account.middleware.AccountMiddleware",
-    #
 ]
+
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -153,24 +167,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "fgf.wsgi.application"
 
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+from rest_framework.permissions import AllowAny
 
+REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
     
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication', #token generation
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_authtoken.auth.AuthTokenAuthentication',
     ),
 
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
 }
+
+
 
 #AUTH_USER_MODEL = 'auth_app.User'
 
@@ -303,6 +320,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # FOR deployment
 # Default primary key field type
