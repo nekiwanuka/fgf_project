@@ -17,7 +17,7 @@ import os
 import datetime
 from datetime import timedelta
 from .utils.authentication_extensions import AuthTokenAuthenticationExtension
-
+from decouple import config
 import dotenv
 import environ
 env = environ.Env()
@@ -33,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-x51dn5%sqj$rc-#i+-5ivq=#b2u3t7663)0)%xds22fu@c9l$1"
+SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

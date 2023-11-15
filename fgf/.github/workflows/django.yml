@@ -27,8 +27,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
         env:
-          DJANGO_SECRET_KEY: YOUR-SECRET-KEY
-          DATABASE_URL: YOUR-DATABASE-URL
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          #DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Create .env file
+        run: echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" > .env
 
       - name: Cache Dependencies
         uses: actions/cache@v2
