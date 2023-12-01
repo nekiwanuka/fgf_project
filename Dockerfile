@@ -1,5 +1,5 @@
 # Use an appropriate Python image for your Django project
-FROM python:3.11
+FROM python:3.10
 
 # Set environment variables for Python
 ENV PYTHONDONTWRITEBYTECODE 1

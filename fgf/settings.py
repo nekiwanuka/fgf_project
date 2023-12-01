@@ -16,6 +16,8 @@ import os
 #import dj_database_url
 import datetime
 from datetime import timedelta
+
+import dj_database_url
 from .utils.authentication_extensions import AuthTokenAuthenticationExtension
 from decouple import config
 import dotenv
@@ -264,27 +266,21 @@ FIREBASE_MEASUREMENTID = os.environ.get('FIREBASE_MEASUREMENTID')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    
-"default": {
-    "ENGINE": "django.db.backends.sqlite3",
-    "NAME": BASE_DIR / "db.sqlite3",
-    
-    # 'ENGINE': 'django.db.backends.postgresql',
-    # 'NAME': 'fgf-db',
-    # 'USER': 'fgf-app',
-    # 'PASSWORD': 'fgf=password',
-    # 'HOST': 'localhost',
-    # 'PORT': '5432',
-    
+    "default": {
+        "ENGINE": config("DB_ENGINE"),
+        "NAME": config("DB_NAME", default=""),
+        "USER": config("DB_USER", default=""),
+        "PASSWORD": config("DB_PASSWORD", default=""),
+        "HOST": config("DB_HOST", default=""),
+        "PORT": config("DB_PORT", default=""),
     }
 }
 
-     
- 
 
-#DATABASES['default'] = dj_database_url.parse('postgres://fgf_database_user:Hqa4PKjnQGZa33ErpfAYCRpSujZmyp7M@dpg-cka1lbev3ddc739sufb0-a.oregon-postgres.render.com/fgf_database')
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+# Other settings...
+DATABASES = {"default": dj_database_url.config(default=config("DATABASE_URL"))}
+
+ATOMIC_REQUESTS = False
 
 AUTH_PASSWORD_VALIDATORS = [
     {
